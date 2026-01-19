@@ -649,6 +649,57 @@
         }
     });
 
+    // Certificate Modal Functionality
+    const certificateCards = document.querySelectorAll('.certificate-card');
+    const certificateModal = document.getElementById('certificateModal');
+    const certificateModalClose = certificateModal ? certificateModal.querySelector('.certificate-modal-close') : null;
+    const certificateModalOverlay = certificateModal ? certificateModal.querySelector('.certificate-modal-overlay') : null;
+    const certificateModalImage = certificateModal ? document.getElementById('certificateModalImage') : null;
+
+    function openCertificateModal(imageSrc, imageAlt) {
+        if (!certificateModal || !certificateModalImage) return;
+        
+        certificateModalImage.src = imageSrc;
+        certificateModalImage.alt = imageAlt || 'Certificate';
+        certificateModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeCertificateModal() {
+        if (!certificateModal) return;
+        
+        certificateModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Event listeners for certificate cards
+    certificateCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const imageSrc = this.getAttribute('data-certificate');
+            const image = this.querySelector('.certificate-image');
+            const imageAlt = image ? image.getAttribute('alt') : 'Certificate';
+            
+            if (imageSrc) {
+                openCertificateModal(imageSrc, imageAlt);
+            }
+        });
+    });
+
+    if (certificateModalClose) {
+        certificateModalClose.addEventListener('click', closeCertificateModal);
+    }
+
+    if (certificateModalOverlay) {
+        certificateModalOverlay.addEventListener('click', closeCertificateModal);
+    }
+
+    // Close certificate modal on ESC key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && certificateModal && certificateModal.classList.contains('active')) {
+            closeCertificateModal();
+        }
+    });
+
     // Console welcome message (for development)
     console.log('%cAl Dhabi Steel', 'font-size: 24px; font-weight: bold; color: #C29A5B;');
     console.log('%cPremium Industrial Website | Built 2025-2026', 'font-size: 12px; color: #9CA3AF;');
