@@ -15,6 +15,7 @@
     const animateElements = document.querySelectorAll('.animate-on-scroll');
     const statNumbers = document.querySelectorAll('.stat-number');
     const contactForm = document.getElementById('contactForm');
+    const heroSlides = document.querySelectorAll('.hero-slide');
     
     // Navigation Scroll Effect
     let lastScroll = 0;
@@ -34,6 +35,50 @@
 
     window.addEventListener('scroll', handleNavbarScroll, { passive: true });
     handleNavbarScroll(); // Initial check
+
+    // Hero Image Carousel - Smooth Crossfade
+    if (heroSlides && heroSlides.length > 0) {
+        let currentHeroIndex = 0;
+        const heroInterval = 18000; // 18 seconds between transitions
+
+        // Ensure only one slide is active on load
+        heroSlides.forEach((slide, index) => {
+            if (index === 0) {
+                slide.classList.add('active');
+            } else {
+                slide.classList.remove('active');
+            }
+        });
+
+        // Preload next image for smooth transitions
+        function preloadNextImage(index) {
+            const nextIndex = (index + 1) % heroSlides.length;
+            const nextSlide = heroSlides[nextIndex];
+            if (nextSlide && nextSlide.src) {
+                const img = new Image();
+                img.src = nextSlide.src;
+            }
+        }
+
+        // Start carousel with infinite loop
+        if (heroSlides.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            // Preload all images for smooth transitions
+            heroSlides.forEach((slide, index) => {
+                if (index > 0) {
+                    preloadNextImage(index - 1);
+                }
+            });
+
+            setInterval(() => {
+                const nextIndex = (currentHeroIndex + 1) % heroSlides.length;
+                heroSlides[currentHeroIndex].classList.remove('active');
+                heroSlides[nextIndex].classList.add('active');
+                currentHeroIndex = nextIndex;
+                // Preload the next image after current one
+                preloadNextImage(nextIndex);
+            }, heroInterval);
+        }
+    }
 
     // Mobile Navigation Toggle
     if (navToggle && navMenu) {
