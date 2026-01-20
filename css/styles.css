@@ -702,149 +702,74 @@ section:nth-child(odd) {
     box-shadow: var(--shadow-2xl);
 }
 
-/* Vision & Mission Section - Premium Two-Column Layout */
+/* Vision & Mission Section - Clean Icon-Led Layout */
 .vision-mission {
     position: relative;
     overflow: hidden;
+    padding: var(--spacing-3xl) 0;
+    background-color: var(--color-primary-bg);
 }
 
 .vision-mission::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 1px;
-    height: 60%;
-    background: linear-gradient(180deg, transparent, var(--color-accent), transparent);
-    opacity: 0.15;
-    pointer-events: none;
+    display: none;
 }
 
-.vision-mission-content {
+.vision-mission-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--spacing-3xl);
     margin-top: var(--spacing-2xl);
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    position: relative;
+    padding: 0 var(--spacing-md);
 }
 
-.vision-column,
-.mission-column {
-    position: relative;
+.vision-mission-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding: 0;
 }
 
-.vision-mission-card {
-    background: linear-gradient(135deg, var(--color-section-alt), var(--color-secondary-bg));
-    padding: var(--spacing-3xl);
-    border-radius: var(--radius-2xl);
-    border: 1px solid var(--color-border-light);
-    box-shadow: var(--shadow-md);
-    transition: all var(--transition-slow);
+.vision-mission-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-text-secondary);
+    opacity: 0.6;
+    transition: all var(--transition-base);
+    flex-shrink: 0;
+}
+
+.vision-mission-icon svg {
+    width: 100%;
     height: 100%;
-    position: relative;
-    overflow: hidden;
+    stroke: currentColor;
 }
 
-.vision-mission-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--color-accent), var(--color-accent-hover));
-    transform: scaleX(0);
-    transition: transform var(--transition-base);
-    transform-origin: left;
+.vision-mission-item:hover .vision-mission-icon {
+    opacity: 0.85;
+    color: var(--color-text-primary);
 }
 
-.vision-mission-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-xl);
-    border-color: var(--color-accent);
-}
-
-.vision-mission-card:hover::before {
-    transform: scaleX(1);
-}
-
-.vision-mission-title {
+.vision-mission-heading {
     font-size: var(--fs-xl);
     font-weight: 600;
-    color: var(--color-text-primary);
-    margin-bottom: var(--spacing-md);
     letter-spacing: -0.02em;
-    position: relative;
-    z-index: 1;
-}
-
-.vision-mission-divider {
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--color-accent), var(--color-accent-hover));
-    margin-bottom: var(--spacing-lg);
-    border-radius: var(--radius-sm);
-    transition: width var(--transition-base);
-}
-
-.vision-mission-card:hover .vision-mission-divider {
-    width: 80px;
-}
-
-.vision-mission-text {
-    font-size: var(--fs-base);
-    line-height: 1.8;
-    color: var(--color-text-secondary);
-    margin-bottom: var(--spacing-lg);
-    letter-spacing: 0.01em;
-    position: relative;
-    z-index: 1;
-}
-
-.mission-list {
-    list-style: none;
-    padding: 0;
-    margin: var(--spacing-lg) 0 0 0;
-    position: relative;
-    z-index: 1;
-}
-
-.mission-list li {
-    position: relative;
-    padding-left: var(--spacing-xl);
     margin-bottom: var(--spacing-md);
-    font-size: var(--fs-base);
+    color: var(--color-text-primary);
+    line-height: 1.3;
+}
+
+.vision-mission-copy {
+    margin: 0;
     line-height: 1.75;
     color: var(--color-text-secondary);
+    font-size: var(--fs-base);
     letter-spacing: 0.01em;
-}
-
-.mission-list li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0.75em;
-    width: 6px;
-    height: 6px;
-    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-hover));
-    border-radius: 50%;
-    transform: translateY(-50%);
-    transition: all var(--transition-base);
-}
-
-.mission-list li:hover {
-    color: var(--color-text-primary);
-    padding-left: calc(var(--spacing-xl) + 4px);
-}
-
-.mission-list li:hover::before {
-    width: 8px;
-    height: 8px;
-    box-shadow: 0 0 0 4px var(--color-accent-light);
+    max-width: none;
 }
 
 /* Services Section - Premium Asymmetrical Layout */
@@ -1297,64 +1222,6 @@ section:nth-child(odd) {
     margin: 0 auto;
 }
 
-.certification-badge {
-    text-align: center;
-    padding: var(--spacing-2xl);
-    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-hover) 100%);
-    border-radius: var(--radius-2xl);
-    margin: var(--spacing-2xl) auto var(--spacing-3xl);
-    max-width: 600px;
-    color: #FFFFFF;
-    box-shadow: var(--shadow-2xl);
-    position: relative;
-    overflow: hidden;
-}
-
-.certification-badge::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
-    animation: rotate 20s linear infinite;
-}
-
-@keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-.badge-icon {
-    width: 72px;
-    height: 72px;
-    margin: 0 auto var(--spacing-md);
-    color: #FFFFFF;
-    position: relative;
-    z-index: 1;
-}
-
-.badge-icon svg {
-    width: 100%;
-    height: 100%;
-}
-
-.badge-title {
-    font-size: var(--fs-xl);
-    margin-bottom: var(--spacing-sm);
-    color: #FFFFFF;
-    position: relative;
-    z-index: 1;
-}
-
-.badge-description {
-    font-size: var(--fs-base);
-    color: rgba(255, 255, 255, 0.95);
-    position: relative;
-    z-index: 1;
-}
-
 .why-choose-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1428,129 +1295,105 @@ section:nth-child(odd) {
     letter-spacing: 0.01em;
 }
 
-/* Certifications & Accreditations Section */
-.certifications {
+/* Certificates Section - Minimal & Professional */
+.certificates {
     position: relative;
     overflow: hidden;
+    background-color: var(--color-section-alt);
 }
 
-.certifications::before {
-    content: '';
-    position: absolute;
-    top: -10%;
-    left: -5%;
-    width: 30%;
-    height: 60%;
-    background: linear-gradient(135deg, var(--color-accent-light), transparent);
-    opacity: 0.2;
-    border-radius: 0 50% 50% 0;
-    pointer-events: none;
-}
-
-.certifications-grid {
+.certificates-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--spacing-lg);
     margin-top: var(--spacing-2xl);
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: stretch;
 }
 
 .certificate-card {
-    background: linear-gradient(135deg, var(--color-section-alt), var(--color-secondary-bg));
-    border-radius: var(--radius-xl);
+    background-color: var(--color-primary-bg);
+    border-radius: var(--radius-lg);
     overflow: hidden;
-    transition: all var(--transition-slow);
+    transition: all var(--transition-base);
     border: 1px solid var(--color-border-light);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-sm);
     cursor: pointer;
     position: relative;
     display: flex;
     flex-direction: column;
-}
-
-.certificate-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(201, 169, 97, 0.1), transparent);
-    opacity: 0;
-    transition: opacity var(--transition-base);
-    z-index: 1;
-    pointer-events: none;
+    height: 100%;
 }
 
 .certificate-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-xl);
-    border-color: var(--color-accent);
-}
-
-.certificate-card:hover::before {
-    opacity: 1;
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-border);
 }
 
 .certificate-image-wrapper {
     width: 100%;
-    height: 320px;
+    height: 400px;
     overflow: hidden;
-    background-color: var(--color-section-bg);
+    background-color: var(--color-secondary-bg);
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: var(--spacing-lg);
-}
-
-.certificate-image-wrapper::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.05));
-    opacity: 0;
-    transition: opacity var(--transition-base);
-    z-index: 1;
-}
-
-.certificate-card:hover .certificate-image-wrapper::after {
-    opacity: 1;
+    padding: var(--spacing-xl);
+    flex: 1;
 }
 
 .certificate-image {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    transition: transform var(--transition-slow);
+    transition: transform var(--transition-base);
     position: relative;
     z-index: 0;
 }
 
 .certificate-card:hover .certificate-image {
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
-.certificate-content {
-    padding: var(--spacing-lg);
-    text-align: center;
-    position: relative;
-    z-index: 2;
-    background: linear-gradient(to bottom, transparent, var(--color-section-alt));
+.certificate-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(15, 23, 42, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color var(--transition-base);
+    z-index: 1;
+    pointer-events: none;
 }
 
-.certificate-title {
-    font-size: var(--fs-lg);
-    font-weight: 600;
-    color: var(--color-text-primary);
-    margin-bottom: var(--spacing-xs);
-    letter-spacing: -0.01em;
-    line-height: 1.4;
+.certificate-card:hover .certificate-overlay {
+    background-color: rgba(15, 23, 42, 0.03);
 }
 
-.certificate-subtitle {
-    font-size: var(--fs-sm);
+.certificate-hint {
+    font-size: var(--fs-xs);
+    font-weight: 500;
     color: var(--color-text-secondary);
-    font-weight: 400;
-    letter-spacing: 0.02em;
-    line-height: 1.6;
-    margin: 0;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all var(--transition-base);
+    background-color: rgba(255, 255, 255, 0.98);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border-light);
+}
+
+.certificate-card:hover .certificate-hint {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Certificate Modal */
@@ -2110,17 +1953,9 @@ section:nth-child(odd) {
         --spacing-2xl: 4.5rem;
     }
     
-    .vision-mission-content {
+    .vision-mission-grid {
         grid-template-columns: 1fr;
         gap: var(--spacing-2xl);
-    }
-    
-    .vision-mission::before {
-        display: none;
-    }
-    
-    .vision-mission-card {
-        padding: var(--spacing-2xl);
     }
     
     .about-content {
@@ -2148,7 +1983,7 @@ section:nth-child(odd) {
         grid-template-columns: repeat(2, 1fr);
     }
     
-    .certifications-grid {
+    .certificates-grid {
         grid-template-columns: repeat(2, 1fr);
     }
     
@@ -2221,17 +2056,8 @@ section:nth-child(odd) {
         padding: var(--spacing-3xl) 0;
     }
     
-    .vision-mission-card {
-        padding: var(--spacing-xl);
-    }
-    
-    .vision-mission-title {
-        font-size: var(--fs-lg);
-    }
-    
-    .mission-list li {
-        padding-left: var(--spacing-lg);
-        font-size: var(--fs-sm);
+    .vision-mission-item {
+        padding: 0;
     }
     
     .about-stats {
@@ -2253,12 +2079,13 @@ section:nth-child(odd) {
         grid-template-columns: 1fr;
     }
     
-    .certifications-grid {
+    .certificates-grid {
         grid-template-columns: 1fr;
     }
     
     .certificate-image-wrapper {
-        height: 280px;
+        height: 350px;
+        padding: var(--spacing-lg);
     }
     
     .products-scroll-wrapper {
@@ -2304,12 +2131,15 @@ section:nth-child(odd) {
         height: 100vh;
     }
     
-    .vision-mission-card {
-        padding: var(--spacing-lg);
+    .vision-mission-grid {
+        gap: var(--spacing-xl);
+        padding: 0 var(--spacing-sm);
     }
     
-    .vision-mission-content {
-        gap: var(--spacing-xl);
+    .vision-mission-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: var(--spacing-md);
     }
     
     .about-stats {
