@@ -6,10 +6,10 @@
     <meta name="description" content="Al Dhabi Steel LLC - Premier steel fabrication company in UAE with over 25 years of expertise in steel, stainless steel, aluminum, and copper fabrication.">
     <meta name="keywords" content="steel fabrication UAE, stainless steel, aluminum fabrication, industrial fabrication, Sharjah">
     <title>Al Dhabi Steel LLC | Premier Steel Fabrication in UAE</title>
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Sora (headings) + IBM Plex Sans (body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -17,24 +17,40 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="logo">
-                <img src="images/logo.jpeg" alt="Al Dhabi Steel LLC logo" class="logo-image">
-                <span class="logo-text">AL DHABI STEEL LLC</span>
+                <img src="images/logo.png" alt="Al Dhabi Steel LLC logo" class="logo-image">
+                <span class="logo-text">AL DHABI STEELS LLC</span>
             </div>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#hero" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#vision-mission" class="nav-link">Vision & Mission</a></li>
-                <li><a href="#services" class="nav-link">Services</a></li>
-                <li><a href="#fabrication" class="nav-link">Capabilities</a></li>
-                <li><a href="#certificates" class="nav-link">Certificates</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+
+                <!-- Company Dropdown -->
+                <li class="nav-dropdown-item" id="companyDropdownItem">
+                    <button class="nav-link nav-dropdown-trigger" id="companyTrigger" aria-haspopup="true" aria-expanded="false">
+                        Company
+                        <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <ul class="nav-dropdown" id="companyDropdown" role="menu">
+                        <li role="none"><a href="#about"          class="nav-dropdown-link" role="menuitem">About</a></li>
+                        <li role="none"><a href="#vision-mission" class="nav-dropdown-link" role="menuitem">Vision &amp; Mission</a></li>
+                        <li role="none"><a href="#fabrication"    class="nav-dropdown-link" role="menuitem">Capabilities</a></li>
+                        <li role="none"><a href="#certificates"   class="nav-dropdown-link" role="menuitem">Certificates</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="#services"  class="nav-link">Services</a></li>
+                <li><a href="#projects"  class="nav-link">Projects</a></li>
+                <li><a href="#contact"   class="nav-link">Contact</a></li>
             </ul>
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <div class="nav-actions">
+                <a href="#contact" class="nav-cta">Get a Quote</a>
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -50,8 +66,9 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <div class="hero-text">
-                <h1 class="hero-company">Al Dhabi Steel LLC</h1>
-                <h2 class="hero-title">Precision Engineering. Excellence Since 1999</h2>
+                <span class="hero-badge">UAE Premier Steel Fabricator Since 1999</span>
+                <h1 class="hero-company">Al Dhabi Steels LLC</h1>
+                <h2 class="hero-title">Precision Engineering.<br>Excellence Delivered.</h2>
                 <div class="hero-cta">
                     <a href="#contact" class="btn btn-primary">Request a Quote</a>
                     <a href="#projects" class="btn btn-secondary">View Projects</a>
@@ -69,7 +86,7 @@
         <div class="container">
             <div class="section-header animate-on-scroll">
                 <span class="section-label">About Us</span>
-                <h2 class="section-title">Al Dhabi Steel LLC</h2>
+                <h2 class="section-title">Al Dhabi Steels LLC</h2>
                 <div class="title-underline"></div>
             </div>
             <div class="about-content">
@@ -121,26 +138,42 @@
                 <div class="title-underline"></div>
             </div>
             <div class="vision-mission-grid">
-                <div class="vision-mission-item animate-on-scroll">
-                    <div class="vision-mission-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <circle cx="12" cy="12" r="6"></circle>
-                            <circle cx="12" cy="12" r="2"></circle>
-                        </svg>
+                <div class="vision-mission-card animate-on-scroll">
+                    <div class="vision-mission-card-inner">
+                        <div class="vision-mission-icon-wrapper">
+                            <div class="vision-mission-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <circle cx="12" cy="12" r="6"></circle>
+                                    <circle cx="12" cy="12" r="2"></circle>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="vision-mission-content">
+                            <h3 class="vision-mission-heading">Our Vision</h3>
+                            <div class="vision-mission-divider"></div>
+                            <p class="vision-mission-copy">To become a trusted and leading steel fabrication company, recognized for precision engineering, architectural excellence, and quality craftsmanship.</p>
+                        </div>
+                        <div class="vision-mission-decoration"></div>
                     </div>
-                    <h3 class="vision-mission-heading">Our Vision</h3>
-                    <p class="vision-mission-copy">To become a trusted and leading steel fabrication company, recognized for precision engineering, architectural excellence, and quality craftsmanship.</p>
                 </div>
-                <div class="vision-mission-item animate-on-scroll">
-                    <div class="vision-mission-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
+                <div class="vision-mission-card animate-on-scroll">
+                    <div class="vision-mission-card-inner">
+                        <div class="vision-mission-icon-wrapper">
+                            <div class="vision-mission-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="vision-mission-content">
+                            <h3 class="vision-mission-heading">Our Mission</h3>
+                            <div class="vision-mission-divider"></div>
+                            <p class="vision-mission-copy">To deliver high-quality steel and stainless steel fabrication solutions through skilled expertise, advanced technology, and a strong commitment to quality, safety, and client satisfaction.</p>
+                        </div>
+                        <div class="vision-mission-decoration"></div>
                     </div>
-                    <h3 class="vision-mission-heading">Our Mission</h3>
-                    <p class="vision-mission-copy">To deliver high-quality steel and stainless steel fabrication solutions through skilled expertise, advanced technology, and a strong commitment to quality, safety, and client satisfaction.</p>
                 </div>
             </div>
         </div>
@@ -172,7 +205,7 @@
                     <div class="service-image">
                         <img src="images/Special Structures.webp" alt="Special Structures">
                     </div>
-                    <h3 class="service-title">Special Structures</h3>
+                    <h3 class="service-title">Cutomized Fabrication</h3>
                 </div>
                 <div class="service-item animate-on-scroll">
                     <div class="service-image">
@@ -184,82 +217,140 @@
         </div>
     </section>
 
-    <!-- Our Products at a Glance Section -->
+    <!-- Solutions Showcase Section -->
     <section id="products" class="products-showcase">
         <div class="container">
             <div class="section-header animate-on-scroll">
                 <span class="section-label">Portfolio</span>
                 <h2 class="section-title">Our Products at a Glance</h2>
                 <div class="title-underline"></div>
+                <p class="section-description">From architectural metalwork to heavy-duty industrial fabrication — precision built from steel, stainless steel, aluminium, and copper.</p>
             </div>
-            <div class="products-scroll-container">
-                <div class="products-scroll-wrapper">
-                    <div class="product-card animate-on-scroll">
-                        <img src="images/Slide-images/al-dhabi-roof-opener.webp" alt="Al Dhabi Roof Opener">
+
+            <div class="portfolio-grid">
+                <a href="general-solutions.html" class="portfolio-card animate-on-scroll" aria-label="View General Solutions portfolio">
+                    <div class="portfolio-card-image">
+                        <img src="images/Special Structures.webp" alt="General Solutions" loading="lazy">
                     </div>
-                    <div class="product-card animate-on-scroll">
-                        <img src="images/Slide-images/aldhabi-1.webp" alt="Al Dhabi Steel Product">
+                    <div class="portfolio-card-caption">
+                        <h3 class="portfolio-card-title">General Solutions</h3>
                     </div>
-                    <div class="product-card animate-on-scroll">
-                        <img src="images/Slide-images/aldhabi-2-1.webp" alt="Al Dhabi Steel Product">
+                    <div class="portfolio-card-hover">
+                        <img src="images/logo.png" alt="Al Dhabi Steel" class="portfolio-card-logo">
+                        <span class="portfolio-card-cta">Explore Gallery
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </span>
                     </div>
-                    <div class="product-card animate-on-scroll">
-                        <img src="images/Slide-images/aldhabi-3.webp" alt="Al Dhabi Steel Product">
+                </a>
+                <a href="customized-manufacturing.html" class="portfolio-card animate-on-scroll" aria-label="View Customized Manufacturing portfolio">
+                    <div class="portfolio-card-image">
+                        <img src="images/Customized Projects.webp" alt="Customized Manufacturing" loading="lazy">
                     </div>
-                    <div class="product-card animate-on-scroll">
-                        <img src="images/Slide-images/aldhabi-5.webp" alt="Al Dhabi Steel Product">
+                    <div class="portfolio-card-caption">
+                        <h3 class="portfolio-card-title">Customized Manufacturing</h3>
                     </div>
-                    <div class="product-card animate-on-scroll">
-                        <img src="images/Slide-images/aldhabi-6.webp" alt="Al Dhabi Steel Product">
+                    <div class="portfolio-card-hover">
+                        <img src="images/logo.png" alt="Al Dhabi Steel" class="portfolio-card-logo">
+                        <span class="portfolio-card-cta">Explore Gallery
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </span>
                     </div>
-                    <div class="product-card animate-on-scroll">
-                        <img src="images/Slide-images/aldhabisteel.-aluminium-man-hole.webp" alt="Al Dhabi Steel Aluminium Man Hole">
+                </a>
+                <a href="drainage-solutions.html" class="portfolio-card animate-on-scroll" aria-label="View Drainage Solutions portfolio">
+                    <div class="portfolio-card-image">
+                        <img src="images/Slide-images/Drainage%20Solutions/page_46_img_4.jpeg" alt="Drainage Solutions" loading="lazy">
                     </div>
-                    <div class="product-card animate-on-scroll">
-                        <img src="images/Slide-images/steel-fabricator-1.webp" alt="Steel Fabricator">
+                    <div class="portfolio-card-caption">
+                        <h3 class="portfolio-card-title">Drainage Solutions</h3>
                     </div>
-                    <div class="product-card animate-on-scroll">
-                        <img src="images/Slide-images/steel-fabricator-2.webp" alt="Steel Fabricator">
+                    <div class="portfolio-card-hover">
+                        <img src="images/logo.png" alt="Al Dhabi Steel" class="portfolio-card-logo">
+                        <span class="portfolio-card-cta">Explore Gallery
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </span>
                     </div>
-                    <div class="product-card animate-on-scroll">
-                        <img src="images/Slide-images/steel-fabricator-3.webp" alt="Steel Fabricator">
+                </a>
+                <a href="fitout-solutions.html" class="portfolio-card animate-on-scroll" aria-label="View Fitout Solutions portfolio">
+                    <div class="portfolio-card-image">
+                        <img src="images/Slide-images/Fitout%20Solutions/page_55_img_3.jpeg" alt="Fitout Solutions" loading="lazy">
                     </div>
-                    <div class="product-card animate-on-scroll">
-                        <img src="images/Slide-images/steel-fabricator-4.webp" alt="Steel Fabricator">
+                    <div class="portfolio-card-caption">
+                        <h3 class="portfolio-card-title">Fitout Solutions</h3>
                     </div>
-                    <div class="product-card animate-on-scroll">
-                        <img src="images/Slide-images/steel-fabricator-5.webp" alt="Steel Fabricator">
+                    <div class="portfolio-card-hover">
+                        <img src="images/logo.png" alt="Al Dhabi Steel" class="portfolio-card-logo">
+                        <span class="portfolio-card-cta">Explore Gallery
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </span>
                     </div>
-                    <div class="product-card animate-on-scroll">
-                        <img src="images/Slide-images/steel-fabricator-7-1.webp" alt="Steel Fabricator">
+                </a>
+                <a href="kitchen-solutions.html" class="portfolio-card animate-on-scroll" aria-label="View Kitchen Solutions portfolio">
+                    <div class="portfolio-card-image">
+                        <img src="images/Facility Planning Of Kitchens.webp" alt="Kitchen Solutions" loading="lazy">
                     </div>
-                    <div class="product-card animate-on-scroll">
-                        <img src="images/Slide-images/steel-fabricator-8.webp" alt="Steel Fabricator">
+                    <div class="portfolio-card-caption">
+                        <h3 class="portfolio-card-title">Kitchen Solutions</h3>
                     </div>
-                    <div class="product-card animate-on-scroll">
-                        <img src="images/Slide-images/steel-fabricator-9.webp" alt="Steel Fabricator">
+                    <div class="portfolio-card-hover">
+                        <img src="images/logo.png" alt="Al Dhabi Steel" class="portfolio-card-logo">
+                        <span class="portfolio-card-cta">Explore Gallery
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </span>
                     </div>
-                    <div class="product-card animate-on-scroll">
-                        <img src="images/Slide-images/steel-fabricator-10.webp" alt="Steel Fabricator">
+                </a>
+            </div>
+
+            <!-- Solutions Showcase — expands below cards on click -->
+            <div class="showcase-panel" id="showcasePanel" aria-hidden="true">
+                <div class="showcase-panel-inner">
+
+                    <!-- Header row -->
+                    <div class="showcase-header">
+                        <div class="showcase-title-wrap">
+                            <span class="showcase-label">Solutions</span>
+                            <h3 class="showcase-title" id="showcaseTitle"></h3>
+                        </div>
+                        <button class="showcase-close" id="showcaseClose" aria-label="Close showcase">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                            </svg>
+                        </button>
                     </div>
-                    <div class="product-card animate-on-scroll">
-                        <img src="images/Slide-images/steel-fabricator-11.webp" alt="Steel Fabricator">
+
+                    <!-- Main stage -->
+                    <div class="showcase-stage">
+                        <!-- Prev arrow -->
+                        <button class="showcase-arrow showcase-prev" id="showcasePrev" aria-label="Previous image">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <polyline points="15 18 9 12 15 6"/>
+                            </svg>
+                        </button>
+
+                        <!-- Main image viewport -->
+                        <div class="showcase-main-viewport">
+                            <div class="showcase-main-track" id="showcaseTrack">
+                                <!-- images injected by JS -->
+                            </div>
+                        </div>
+
+                        <!-- Next arrow -->
+                        <button class="showcase-arrow showcase-next" id="showcaseNext" aria-label="Next image">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <polyline points="9 18 15 12 9 6"/>
+                            </svg>
+                        </button>
                     </div>
-                    <div class="product-card animate-on-scroll">
-                        <img src="images/Slide-images/steel-fabricator-12.webp" alt="Steel Fabricator">
+
+                    <!-- Counter -->
+                    <div class="showcase-counter" id="showcaseCounter">1 / 1</div>
+
+                    <!-- Thumbnail strip -->
+                    <div class="showcase-thumbs-wrap">
+                        <div class="showcase-thumbs" id="showcaseThumbs">
+                            <!-- thumbnails injected by JS -->
+                        </div>
                     </div>
-                    <div class="product-card animate-on-scroll">
-                        <img src="images/Slide-images/steel-fabricator-13.webp" alt="Steel Fabricator">
-                    </div>
-                    <div class="product-card animate-on-scroll">
-                        <img src="images/Slide-images/steel-fabricator-14.webp" alt="Steel Fabricator">
-                    </div>
-                    <div class="product-card animate-on-scroll">
-                        <img src="images/Slide-images/steel-fabricator-15.webp" alt="Steel Fabricator">
-                    </div>
-                    <div class="product-card animate-on-scroll">
-                        <img src="images/Slide-images/steel-fabricator-16.webp" alt="Steel Fabricator">
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -446,9 +537,10 @@
     <section id="certificates" class="certificates">
         <div class="container">
             <div class="section-header animate-on-scroll">
-                <h2 class="section-title">Certificates</h2>
-                <p class="section-description">Compliance & Quality Assurance</p>
+                <span class="section-label">Quality Assurance</span>
+                <h2 class="section-title">Our Certificates</h2>
                 <div class="title-underline"></div>
+                <p class="section-description">Compliance & Quality Assurance</p>
             </div>
             <div class="certificates-grid">
                 <div class="certificate-card animate-on-scroll" data-certificate="images/Certi-01.png">
@@ -495,75 +587,250 @@
         </div>
     </div>
 
+    <!-- Client Reviews Section -->
+    <section id="client-reviews" class="client-reviews">
+        <div class="container">
+
+            <!-- Section Header -->
+            <div class="section-header animate-on-scroll">
+                <span class="section-label">Client Reviews</span>
+                <h2 class="section-title">What Our Clients Say</h2>
+                <div class="title-underline"></div>
+                <p class="section-description">See what businesses, contractors, consultants, and project owners across the UAE have to say about their experience working with Al Dhabi Steel.</p>
+            </div>
+
+            <!-- Trust Summary Bar -->
+            <div class="cr-trust-bar animate-on-scroll">
+                <div class="cr-trust-score">
+                    <span class="cr-trust-stars">★★★★★</span>
+                    <span class="cr-trust-rating">4.9 <span class="cr-trust-max">/ 5</span></span>
+                    <span class="cr-trust-label">Average Rating</span>
+                </div>
+                <div class="cr-trust-divider"></div>
+                <div class="cr-trust-meta">
+                    <span class="cr-trust-count">250+</span>
+                    <span class="cr-trust-desc">Client Reviews Across the UAE</span>
+                </div>
+                <div class="cr-trust-divider"></div>
+                <div class="cr-trust-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    <span>Verified Client Feedback</span>
+                </div>
+            </div>
+
+            <!-- Carousel Wrapper -->
+            <div class="cr-carousel-wrap animate-on-scroll">
+                <!-- Prev Arrow -->
+                <button class="cr-arrow cr-prev" id="crPrev" aria-label="Previous reviews">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20">
+                        <polyline points="15 18 9 12 15 6"/>
+                    </svg>
+                </button>
+
+                <!-- Viewport -->
+                <div class="cr-viewport" id="crViewport">
+                    <div class="cr-track" id="crTrack">
+                        <!-- Cards injected by JS -->
+                    </div>
+                </div>
+
+                <!-- Next Arrow -->
+                <button class="cr-arrow cr-next" id="crNext" aria-label="Next reviews">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20">
+                        <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Dots -->
+            <div class="cr-dots" id="crDots" role="tablist" aria-label="Review carousel pages"></div>
+
+            <!-- Bottom Trust Statement -->
+            <p class="cr-trust-statement animate-on-scroll">
+                Trusted by businesses, contractors, consultants, and project owners across the UAE for quality metal fabrication and engineering solutions.
+            </p>
+
+            <!-- Submit a Review Form -->
+            <div class="cr-form-wrap animate-on-scroll" id="crFormWrap">
+                <div class="cr-form-header">
+                    <div class="cr-form-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="cr-form-title">Share Your Experience</h3>
+                        <p class="cr-form-sub">We value every client's feedback. Tell us about your project with Al Dhabi Steel.</p>
+                    </div>
+                </div>
+                <form id="crForm" class="cr-form" novalidate>
+                    <div class="cr-form-row">
+                        <div class="cr-field">
+                            <label for="crName">Your Name <span aria-hidden="true">*</span></label>
+                            <input type="text" id="crName" placeholder="e.g. Ahmed Al Rashidi" autocomplete="name" required>
+                        </div>
+                        <div class="cr-field">
+                            <label for="crCompany">Company / Role</label>
+                            <input type="text" id="crCompany" placeholder="e.g. Project Manager, ACME Corp">
+                        </div>
+                    </div>
+                    <div class="cr-field">
+                        <label>Your Rating <span aria-hidden="true">*</span></label>
+                        <div class="cr-star-picker" id="crStarPicker" role="group" aria-label="Select star rating">
+                            <button type="button" class="cr-star-btn" data-val="1" aria-label="1 star">★</button>
+                            <button type="button" class="cr-star-btn" data-val="2" aria-label="2 stars">★</button>
+                            <button type="button" class="cr-star-btn" data-val="3" aria-label="3 stars">★</button>
+                            <button type="button" class="cr-star-btn" data-val="4" aria-label="4 stars">★</button>
+                            <button type="button" class="cr-star-btn" data-val="5" aria-label="5 stars">★</button>
+                        </div>
+                        <input type="hidden" id="crRating" value="0">
+                    </div>
+                    <div class="cr-field">
+                        <label for="crText">Your Review <span aria-hidden="true">*</span></label>
+                        <textarea id="crText" rows="4" placeholder="Tell others about your experience working with Al Dhabi Steel..." required></textarea>
+                    </div>
+                    <div class="cr-form-actions">
+                        <button type="submit" class="cr-submit-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true">
+                                <polyline points="22 2 11 13"/>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                            </svg>
+                            Submit Review
+                        </button>
+                        <p class="cr-form-note">Reviews are moderated before appearing publicly.</p>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <div class="section-header animate-on-scroll">
-                <span class="section-label">Get In Touch</span>
-                <h2 class="section-title">Request a Quote</h2>
-                <div class="title-underline"></div>
-                <p class="section-description">Ready to bring your project to life? Contact us for a consultation</p>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info animate-on-scroll">
-                    <div class="info-item">
-                        <div class="info-icon">
+            <div class="contact-wrapper">
+                <div class="contact-hero">
+                    <span class="section-label">Start Your Project</span>
+                    <h2 class="contact-title">Let's Build Something Great Together</h2>
+                    <p class="contact-subtitle">Get a free quote within 24 hours. Our experts are ready to bring your vision to life.</p>
+                    
+                    <div class="contact-highlights">
+                        <div class="highlight-item">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></path>
-                                <circle cx="12" cy="10" r="3"></circle>
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
                             </svg>
+                            <span>24-Hour Response</span>
                         </div>
-                        <div class="info-content">
-                            <h3 class="info-title">Location</h3>
-                            <p class="info-text">Post Box No. 37656<br>Industrial Area 13<br>Sharjah, UAE</p>
+                        <div class="highlight-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                            <span>Free Consultation</span>
+                        </div>
+                        <div class="highlight-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                            <span>Expert Guidance</span>
                         </div>
                     </div>
-                    <div class="info-item">
-                        <div class="info-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"></path>
+
+                    <div class="contact-methods">
+                        <a href="tel:+971502566872" class="contact-method-card">
+                            <div class="method-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"></path>
+                                </svg>
+                            </div>
+                            <div class="method-content">
+                                <span class="method-label">Call Us</span>
+                                <span class="method-value">+971 50 2566 872</span>
+                            </div>
+                        </a>
+
+                        <a href="mailto:info@aldhabisteel.com" class="contact-method-card">
+                            <div class="method-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                            </div>
+                            <div class="method-content">
+                                <span class="method-label">Email Us</span>
+                                <span class="method-value">info@aldhabisteels.com</span>
+                            </div>
+                        </a>
+
+                        <div class="contact-method-card location-card">
+                            <div class="method-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
                             </svg>
-                        </div>
-                        <div class="info-content">
-                            <h3 class="info-title">Phone</h3>
-                            <p class="info-text">
-                                <a href="tel:+971502566872">+971 50 2566 872</a><br>
-                                <a href="tel:+971544493575">+971 54 4493 575</a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                <polyline points="22,6 12,13 2,6"></polyline>
-                            </svg>
-                        </div>
-                        <div class="info-content">
-                            <h3 class="info-title">Email</h3>
-                            <p class="info-text">
-                                <a href="mailto:info@aldhabisteel.com">info@aldhabisteel.com</a><br>
-                                <a href="mailto:aldhabisteel@gmail.com">aldhabisteel@gmail.com</a>
-                            </p>
+                            </div>
+                            <div class="method-content">
+                                <span class="method-label">Visit Us</span>
+                                <span class="method-value">Industrial Area 13, Sharjah</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="contact-form-container animate-on-scroll">
+
+                <div class="contact-form-wrapper">
+                    <div class="form-header">
+                        <h3 class="form-title">Get Your Free Quote</h3>
+                        <p class="form-description">Fill out the form and we'll respond within 24 hours</p>
+                    </div>
+                    
                     <form class="contact-form" id="contactForm">
-                        <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" placeholder="Full Name *" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" placeholder="Email Address *" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="tel" id="phone" name="phone" placeholder="Phone Number *" required>
+                            </div>
+                            <div class="form-group">
+                                <select id="service" name="service" required>
+                                    <option value="">Select Service *</option>
+                                    <option value="kitchen">Kitchen Fabrication</option>
+                                    <option value="metal">Metal Assemblies</option>
+                                    <option value="structures">Special Structures</option>
+                                    <option value="custom">Customized Projects</option>
+                                    <option value="fitout">Fitout Solutions</option>
+                                    <option value="other">Other Services</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                            <textarea id="message" name="message" rows="4" placeholder="Tell us about your project..." required></textarea>
                         </div>
-                        <div class="form-group">
-                            <input type="tel" id="phone" name="phone" placeholder="Your Phone">
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" name="message" rows="5" placeholder="Project Details" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                        <button type="submit" class="btn btn-primary btn-full btn-submit">
+                            <span>Get Free Quote</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
                     </form>
+
+                    <div class="form-footer">
+                        <a href="https://wa.me/971502566872?text=Hello%2C%20I%27d%20like%20to%20get%20a%20quote" target="_blank" rel="noopener noreferrer" class="whatsapp-quick-btn">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                            </svg>
+                            <span>Or chat on WhatsApp</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -572,31 +839,62 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand animate-on-scroll">
-                    <h3 class="footer-logo">AL DHABI STEEL</h3>
-                    <p class="footer-tagline">Precision Engineering. Excellence Since 1999.</p>
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <img src="images/logo.png" alt="Al Dhabi Steel Logo" class="footer-logo-img">
+                    <h3 class="footer-logo">AL DHABI STEEL LLC</h3>
+                    <p class="footer-tagline">Leading steel fabrication company in UAE since 1999. Delivering precision engineering and excellence in every project.</p>
+                    <div class="footer-certifications">
+                        <span class="cert-badge">ISO Certified</span>
+                        <span class="cert-badge">25+ Years</span>
+                    </div>
                 </div>
-                <div class="footer-links animate-on-scroll">
-                    <h4 class="footer-title">Quick Links</h4>
-                    <ul class="footer-menu">
-                        <li><a href="#hero">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#fabrication">Capabilities</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-contact animate-on-scroll">
-                    <h4 class="footer-title">Contact</h4>
-                    <p>Post Box No. 37656<br>Industrial Area 13<br>Sharjah, UAE</p>
-                    <p>+971 50 2566 872</p>
-                    <p><a href="mailto:info@aldhabisteel.com">info@aldhabisteel.com</a></p>
-                </div>
-                <div class="footer-social animate-on-scroll">
-                    <h4 class="footer-title">Follow Us</h4>
-                    <div class="social-links">
+
+                <div class="footer-columns">
+                    <div class="footer-column">
+                        <h4 class="footer-title">Services</h4>
+                        <ul class="footer-menu">
+                            <li><a href="#services">Kitchen Fabrication</a></li>
+                            <li><a href="#services">Metal Assemblies</a></li>
+                            <li><a href="#services">Special Structures</a></li>
+                            <li><a href="#fabrication">Custom Manufacturing</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4 class="footer-title">Company</h4>
+                        <ul class="footer-menu">
+                            <li><a href="#about">About Us</a></li>
+                            <li><a href="#projects">Our Projects</a></li>
+                            <li><a href="#certificates">Certificates</a></li>
+                            <li><a href="#contact">Get Quote</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column footer-contact">
+                        <h4 class="footer-title">Contact Us</h4>
+                        <div class="footer-contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>Industrial Area 13<br>Sharjah, UAE</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"></path>
+                            </svg>
+                            <a href="tel:+971502566872">+971 50 2566 872</a>
+                        </div>
+                        <div class="footer-contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <a href="mailto:info@aldhabisteel.com">info@aldhabisteels.com</a>
+                        </div>
+                        <div class="footer-social">
+                            <div class="social-links">
                         <a href="https://www.facebook.com/people/Aldhabisteelllc/100084510603811/" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page" class="social-link">
                             <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
@@ -622,11 +920,20 @@
                                 <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                             </svg>
                         </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
             <div class="footer-bottom">
-                <p>&copy; 2025 Al Dhabi Steel LLC. All rights reserved.</p>
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 Al Dhabi Steel LLC. All rights reserved.</p>
+                    <div class="footer-bottom-links">
+                        <a href="#hero">Privacy Policy</a>
+                        <a href="#hero">Terms of Service</a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>

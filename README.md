@@ -1,85 +1,118 @@
-# Al Dhabi Steel LLC - Premium Industrial Website
+# Al Dhabi Steel LLC — Official Website
 
-A premium, one-page, scroll-based industrial website for Al Dhabi Steel LLC, redesigned to 2025-2026 standards.
+A premium corporate website for **Al Dhabi Steel LLC**, a leading steel fabrication company in the UAE with 25+ years of expertise. Built entirely with vanilla HTML, CSS, and JavaScript — no frameworks, no dependencies.
+
+🌐 **Live site:** [https://heetraval07.github.io/aldhabisteel](https://heetraval07.github.io/aldhabisteel)
+
+---
 
 ## Project Structure
 
 ```
 aldhabisteel/
-├── index.html          # Main HTML file
+├── index.html                      # Main landing page
+├── general-solutions.html          # General Solutions gallery page
+├── customized-manufacturing.html   # Customized Manufacturing gallery page
+├── drainage-solutions.html         # Drainage Solutions gallery page
+├── fitout-solutions.html           # Fitout Solutions gallery page
+├── kitchen-solutions.html          # Kitchen Solutions gallery page
+│
 ├── css/
-│   └── styles.css     # All CSS styling
+│   ├── styles.css                  # Main stylesheet (landing page)
+│   └── solution-page.css          # Shared styles for all solution pages
+│
 ├── js/
-│   └── main.js        # Vanilla JavaScript functionality
-├── images/            # Image directory (see images/README.md)
-└── README.md          # This file
+│   ├── main.js                     # Landing page JavaScript
+│   └── solution-page.js           # Shared JS for all solution pages
+│
+├── images/
+│   ├── logo.png                    # Company logo
+│   ├── hero-1.jpg / hero-2.jpg / hero-3.jpg
+│   ├── Slide-images/
+│   │   ├── General Solutions/
+│   │   ├── Cutomized Manufacturing/
+│   │   ├── Drainage Solutions/
+│   │   ├── Fitout Solutions/
+│   │   └── Kitchen Solutions/
+│   └── ...project & certificate images
+│
+└── videos/
+    └── hero-bg.mp4                 # Hero background video (optional)
 ```
+
+---
+
+## Pages
+
+| Page | Description |
+|------|-------------|
+| `index.html` | Landing page — hero, about, services, portfolio, projects, why us, certificates, client reviews, contact |
+| `general-solutions.html` | Full image gallery for General Solutions |
+| `customized-manufacturing.html` | Full image gallery for Customized Manufacturing |
+| `drainage-solutions.html` | Full image gallery for Drainage Solutions |
+| `fitout-solutions.html` | Full image gallery for Fitout Solutions |
+| `kitchen-solutions.html` | Full image gallery for Kitchen Solutions |
+
+---
 
 ## Features
 
-- **One-Page Scroll Design**: Smooth scrolling navigation through all sections
-- **Premium Industrial Aesthetic**: Modern, classy, professional design
-- **Fully Responsive**: Mobile-first design from mobile to ultra-wide screens
-- **Smooth Animations**: Scroll-triggered animations, parallax effects, animated counters
-- **SEO Optimized**: Semantic HTML5, proper meta tags, accessible structure
-- **Performance Focused**: Vanilla JavaScript, optimized CSS, no heavy frameworks
-- **Accessibility**: ARIA labels, keyboard navigation, focus states, reduced motion support
+- **Responsive design** — mobile, tablet, and desktop
+- **Hero carousel** — 3-image auto-rotating background with Ken Burns effect
+- **Scroll animations** — Intersection Observer–based fade/slide-in
+- **Portfolio grid** — 5 solution cards with hover overlay and logo badge
+- **Solution gallery pages** — full-screen lightbox with keyboard, swipe, and click-outside-to-close
+- **Client Reviews carousel** — autoplay, infinite loop, swipe support, submit form
+- **Certificates modal** — click to expand certificate images
+- **Contact form** — validated enquiry form
+- **Floating WhatsApp button**
+- **Custom animated cursor** (desktop only)
+- **No external JS libraries** — 100% vanilla JavaScript
 
-## Sections
+---
 
-1. **Hero** - Full-viewport introduction with CTAs
-2. **About** - Company overview with statistics
-3. **Services** - Four core services displayed in grid
-4. **Fabrication Capabilities** - Six capability areas with visual
-5. **Featured Projects** - Portfolio of 8 major projects
-6. **Why Choose Us** - ISO certification and key differentiators
-7. **Contact** - Contact form and information
-8. **Footer** - Quick links and contact details
+## Hosting on GitHub Pages
 
-## Setup Instructions
+1. Push this repository to GitHub (already configured at `origin`)
+2. Go to **Settings → Pages** in your GitHub repository
+3. Under **Source**, select branch `main` and folder `/ (root)`
+4. Click **Save** — your site will be live at `https://<your-username>.github.io/aldhabisteel`
 
-1. **Extract Images**: 
-   - Visit https://aldhabisteel.com
-   - Extract all images from the existing website
-   - Place them in the `images/` directory following naming conventions in `images/README.md`
-   - **IMPORTANT**: Use ONLY images from the existing site
+> **Note:** GitHub Pages serves static files directly. No build step is needed.
 
-2. **Open Website**:
-   - Open `index.html` in a modern web browser
-   - Or deploy to a web server
+---
 
-3. **Customize** (if needed):
-   - Edit `css/styles.css` for color/styling changes
-   - Edit `js/main.js` for functionality changes
-   - Edit `index.html` for content changes
+## Local Development
+
+Just open `index.html` in any modern browser — no build tools required.
+
+```bash
+# If you want a local server (optional, avoids some browser CORS quirks):
+npx serve .
+# or
+python -m http.server 8080
+```
+
+---
+
+## Technologies
+
+| Layer | Tech |
+|-------|------|
+| Markup | HTML5 (semantic, ARIA) |
+| Styling | CSS3 — custom properties, Grid, Flexbox, `clamp()` |
+| Scripting | Vanilla JavaScript ES6+ |
+| Fonts | Google Fonts — Sora + IBM Plex Sans |
+| Images | WebP, JPEG, PNG |
+
+---
 
 ## Browser Support
 
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Mobile browsers (iOS Safari, Chrome Mobile)
+Chrome · Firefox · Safari · Edge · iOS Safari · Chrome Mobile
 
-## Technologies Used
-
-- HTML5 (semantic, accessible)
-- CSS3 (variables, Grid, Flexbox, clamp() for fluid typography)
-- Vanilla JavaScript (ES6+, Intersection Observer API, smooth scrolling)
-- Google Fonts (Inter, Poppins)
-
-## Deployment
-
-Simply upload all files to your web server maintaining the folder structure:
-- `index.html` → root directory
-- `css/` → css directory
-- `js/` → js directory
-- `images/` → images directory
-
-## Content Note
-
-All content, services, projects, statistics, and contact information have been extracted strictly from the existing aldhabisteel.com website. No new content has been added or modified beyond grammar/clarity improvements.
+---
 
 ## License
 
-Proprietary - Al Dhabi Steel LLC
+Proprietary — © 2025 Al Dhabi Steel LLC. All rights reserved.
