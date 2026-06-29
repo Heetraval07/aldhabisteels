@@ -27,6 +27,8 @@
 
         navMenu.querySelectorAll('.nav-link, .nav-dropdown-link').forEach(link => {
             link.addEventListener('click', () => {
+                // Don't close the nav if this link is a dropdown trigger
+                if (link.classList.contains('nav-dropdown-trigger')) return;
                 navToggle.classList.remove('active');
                 navMenu.classList.remove('active');
                 document.body.style.overflow = '';

@@ -88,9 +88,11 @@
             document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
         });
 
-        // Close menu when clicking on a link
+        // Close menu when clicking on a link (but not dropdown triggers)
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
+                // Don't close the nav if this link is a dropdown trigger — let the dropdown handle it
+                if (link.classList.contains('nav-dropdown-trigger')) return;
                 navToggle.classList.remove('active');
                 navMenu.classList.remove('active');
                 document.body.style.overflow = '';
