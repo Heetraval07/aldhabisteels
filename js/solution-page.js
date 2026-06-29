@@ -82,7 +82,7 @@
         dropdown.addEventListener('mouseleave', () => { if (!isMobile()) scheduleClose(); });
         trigger.addEventListener('click', (e) => { e.stopPropagation(); item.classList.contains('is-open') ? closeNow() : open(); });
         dropdown.querySelectorAll('.nav-dropdown-link').forEach(l => l.addEventListener('click', closeNow));
-        document.addEventListener('click', (e) => { if (!item.contains(e.target)) closeNow(); });
+        document.addEventListener('click', (e) => { if (!isMobile() && !item.contains(e.target)) closeNow(); });
         trigger.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') { closeNow(); trigger.focus(); }
             if (e.key === 'ArrowDown') { e.preventDefault(); open(); dropdown.querySelector('.nav-dropdown-link')?.focus(); }
@@ -132,7 +132,7 @@
         dropdown.addEventListener('mouseleave', () => { if (!isMobile()) scheduleClose(); });
         trigger.addEventListener('click', (e) => { e.stopPropagation(); item.classList.contains('is-open') ? closeNow() : open(); });
         dropdown.querySelectorAll('.nav-dropdown-link').forEach(l => l.addEventListener('click', closeNow));
-        document.addEventListener('click', (e) => { if (!item.contains(e.target)) closeNow(); });
+        document.addEventListener('click', (e) => { if (!isMobile() && !item.contains(e.target)) closeNow(); });
         trigger.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') { closeNow(); trigger.focus(); }
             if (e.key === 'ArrowDown') { e.preventDefault(); open(); dropdown.querySelector('.nav-dropdown-link')?.focus(); }

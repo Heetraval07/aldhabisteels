@@ -172,9 +172,9 @@
             });
         });
 
-        // Outside click — close immediately
+        // Outside click — desktop only (mobile uses toggle click)
         document.addEventListener('click', (e) => {
-            if (!item.contains(e.target)) closeNow();
+            if (!isMobile() && !item.contains(e.target)) closeNow();
         });
 
         // Keyboard: trigger
@@ -276,7 +276,7 @@
         });
 
         document.addEventListener('click', (e) => {
-            if (!item.contains(e.target)) closeNow();
+            if (!isMobile() && !item.contains(e.target)) closeNow();
         });
 
         trigger.addEventListener('keydown', (e) => {
