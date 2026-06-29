@@ -3250,6 +3250,39 @@ section:nth-child(odd) {
 }
 
 @media (max-width: 768px) {
+    /* Always show a solid navbar on mobile — no transparent state */
+    .navbar {
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        padding: 0.875rem 0;
+    }
+
+    /* Logo and nav links always dark on mobile */
+    .logo {
+        color: var(--color-text-primary);
+    }
+
+    .nav-link {
+        color: var(--color-text-primary);
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+        color: var(--color-accent);
+    }
+
+    .nav-link::after {
+        background: linear-gradient(90deg, var(--color-accent), var(--color-accent-hover));
+    }
+
+    /* Hamburger always dark on mobile */
+    .nav-toggle span {
+        background-color: var(--color-text-primary);
+    }
+
     .nav-menu {
         position: fixed;
         left: -100%;
