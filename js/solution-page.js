@@ -96,55 +96,7 @@
         });
     })();
 
-    /* ── Products dropdown ────────────────────── */
-    (function initProductsDropdown() {
-        const item     = document.getElementById('productsDropdownItem');
-        const trigger  = document.getElementById('productsTrigger');
-        const dropdown = document.getElementById('productsDropdown');
-        if (!item || !trigger || !dropdown) return;
-
-        const isMobile = () => window.innerWidth <= 768;
-        let closeTimer = null;
-
-        const open = () => {
-            clearTimeout(closeTimer);
-            item.classList.add('is-open');
-            trigger.setAttribute('aria-expanded', 'true');
-        };
-
-        const scheduleClose = () => {
-            clearTimeout(closeTimer);
-            closeTimer = setTimeout(() => {
-                item.classList.remove('is-open');
-                trigger.setAttribute('aria-expanded', 'false');
-            }, 220);
-        };
-
-        const closeNow = () => {
-            clearTimeout(closeTimer);
-            item.classList.remove('is-open');
-            trigger.setAttribute('aria-expanded', 'false');
-        };
-
-        item.addEventListener('mouseenter', () => { if (!isMobile()) open(); });
-        item.addEventListener('mouseleave', () => { if (!isMobile()) scheduleClose(); });
-        dropdown.addEventListener('mouseenter', () => { if (!isMobile()) clearTimeout(closeTimer); });
-        dropdown.addEventListener('mouseleave', () => { if (!isMobile()) scheduleClose(); });
-        trigger.addEventListener('click', (e) => { e.stopPropagation(); item.classList.contains('is-open') ? closeNow() : open(); });
-        dropdown.querySelectorAll('.nav-dropdown-link').forEach(l => l.addEventListener('click', closeNow));
-        document.addEventListener('click', (e) => { if (!isMobile() && !item.contains(e.target)) closeNow(); });
-        trigger.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') { closeNow(); trigger.focus(); }
-            if (e.key === 'ArrowDown') { e.preventDefault(); open(); dropdown.querySelector('.nav-dropdown-link')?.focus(); }
-        });
-        dropdown.addEventListener('keydown', (e) => {
-            const links = Array.from(dropdown.querySelectorAll('.nav-dropdown-link'));
-            const idx = links.indexOf(document.activeElement);
-            if (e.key === 'ArrowDown') { e.preventDefault(); links[(idx + 1) % links.length]?.focus(); }
-            if (e.key === 'ArrowUp')   { e.preventDefault(); links[(idx - 1 + links.length) % links.length]?.focus(); }
-            if (e.key === 'Escape')    { closeNow(); trigger.focus(); }
-        });
-    })();
+    /* ── Products mega-dropdown handled by nav-products.js ── */
 
     /* ── Scroll animations ────────────────────── */
     const animObserver = new IntersectionObserver((entries) => {

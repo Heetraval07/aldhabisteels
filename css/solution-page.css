@@ -783,3 +783,583 @@
     opacity: 1;
     transform: translateY(0);
 }
+
+
+/* ============================================================
+   PRODUCTS MEGA-DROPDOWN — Two-Level Sideways Navigation
+   Premium multi-level flyout replacing the flat products list
+   ============================================================ */
+
+/* ── Level-1 mega panel (replaces .nav-dropdown for Products) ── */
+.products-mega {
+    position: absolute;
+    top: calc(100% + 0.35rem);
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    width: 680px;
+    background: rgba(255, 255, 255, 0.99);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 20px 56px rgba(0, 0, 0, 0.14), 0 6px 20px rgba(0, 0, 0, 0.07);
+    padding: 0.5rem;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.25s ease,
+                transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                visibility 0.25s;
+    z-index: 300;
+    display: flex;
+    align-items: flex-start;
+    list-style: none;
+}
+
+/* Bridge gap between trigger and panel */
+.products-mega::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: -20px;
+    right: -20px;
+    height: 18px;
+    background: transparent;
+}
+
+/* Arrow pointer */
+.products-mega::after {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    background: #fff;
+    border-left: 1px solid rgba(0, 0, 0, 0.07);
+    border-top: 1px solid rgba(0, 0, 0, 0.07);
+    rotate: 45deg;
+    pointer-events: none;
+}
+
+/* Open state */
+.nav-dropdown-item.is-open .products-mega {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ── Layout: left column (L1 items) + right panel (L2) ── */
+.mega-col-l1 {
+    flex: 0 0 220px;
+    padding: 0.25rem;
+}
+
+.mega-col-l2 {
+    flex: 1;
+    min-width: 0;
+    padding: 0.25rem 0.25rem 0.25rem 0;
+}
+
+/* ── Divider line between columns ── */
+.mega-divider {
+    width: 1px;
+    background: var(--color-border-light);
+    align-self: stretch;
+    margin: 0.75rem 0.25rem;
+    flex-shrink: 0;
+}
+
+/* ── L1 parent item ── */
+.mega-item {
+    position: relative;
+}
+
+.mega-parent-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.65rem 1rem;
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    border-radius: var(--radius-md);
+    transition: background 0.18s ease, color 0.18s ease;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+    border: none;
+    background: none;
+    width: 100%;
+    font-family: var(--font-primary);
+    letter-spacing: 0.01em;
+}
+
+.mega-parent-link:hover,
+.mega-item.is-active .mega-parent-link {
+    background: var(--color-accent-light);
+    color: var(--color-accent);
+}
+
+/* Active page highlight on L1 */
+.mega-parent-link.active {
+    color: var(--color-accent);
+    background: var(--color-accent-light);
+}
+
+/* Chevron icon on items that have children */
+.mega-chevron {
+    width: 13px;
+    height: 13px;
+    color: var(--color-text-muted);
+    transition: transform 0.2s ease, color 0.2s ease;
+    flex-shrink: 0;
+}
+
+.mega-item.is-active .mega-chevron,
+.mega-parent-link:hover .mega-chevron {
+    color: var(--color-accent);
+    transform: translateX(2px);
+}
+
+/* ── L2 sub-panel (right side) ── */
+.mega-sub-panel {
+    display: none;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.25rem;
+    animation: megaSubFadeIn 0.2s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.mega-sub-panel.is-visible {
+    display: flex;
+}
+
+@keyframes megaSubFadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* L2 sub-panel header */
+.mega-sub-header {
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    padding: 0.4rem 0.75rem 0.65rem;
+    border-bottom: 1px solid var(--color-border-light);
+    margin-bottom: 0.25rem;
+}
+
+/* L2 child links */
+.mega-child-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 0.875rem;
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    border-radius: var(--radius-md);
+    transition: background 0.18s ease, color 0.18s ease, padding-left 0.18s ease;
+    white-space: nowrap;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+}
+
+.mega-child-link::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--color-border);
+    flex-shrink: 0;
+    transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.mega-child-link:hover {
+    background: var(--color-accent-light);
+    color: var(--color-accent);
+    padding-left: 1.15rem;
+}
+
+.mega-child-link:hover::before {
+    background: var(--color-accent);
+    transform: scale(1.4);
+}
+
+.mega-child-link.active {
+    color: var(--color-accent);
+    background: var(--color-accent-light);
+}
+
+.mega-child-link.active::before {
+    background: var(--color-accent);
+}
+
+/* ── Empty-state placeholder in L2 ── */
+.mega-sub-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 120px;
+    padding: 1rem;
+    font-size: var(--fs-xs);
+    color: var(--color-text-muted);
+    font-style: italic;
+    text-align: center;
+    letter-spacing: 0.02em;
+}
+
+/* ── MOBILE: full-width accordion (override desktop layout) ── */
+@media (max-width: 768px) {
+    .products-mega {
+        position: static;
+        transform: none;
+        width: 100%;
+        flex-direction: column;
+        background: rgba(201, 169, 97, 0.06);
+        border: none;
+        border-radius: var(--radius-lg);
+        box-shadow: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        padding: 0.25rem 0;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: none;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
+    }
+
+    .products-mega::before,
+    .products-mega::after {
+        display: none;
+    }
+
+    .nav-dropdown-item.is-open .products-mega {
+        max-height: 600px;
+        pointer-events: auto;
+        padding: 0.35rem 0.5rem;
+        transform: none;
+    }
+
+    .mega-col-l1 {
+        flex: none;
+        width: 100%;
+        padding: 0;
+    }
+
+    .mega-col-l2,
+    .mega-divider {
+        display: none;
+    }
+
+    /* Mobile: L2 accordion below each L1 item */
+    .mega-item {
+        width: 100%;
+    }
+
+    .mega-parent-link {
+        text-align: center;
+        justify-content: center;
+        padding: 0.6rem 1rem;
+        font-size: var(--fs-sm);
+    }
+
+    .mega-chevron {
+        display: none;
+    }
+
+    .mega-sub-panel {
+        padding: 0 0.5rem 0.25rem;
+    }
+
+    .mega-sub-header {
+        display: none;
+    }
+
+    .mega-child-link {
+        text-align: center;
+        justify-content: center;
+        padding: 0.5rem 0.75rem;
+        font-size: var(--fs-xs);
+    }
+
+    .mega-child-link::before {
+        display: none;
+    }
+
+    /* Show sub-panel inline on mobile when parent is touched */
+    .mega-item.is-active .mega-sub-panel {
+        display: flex;
+        animation: none;
+    }
+}
+
+/* ============================================================
+   PRODUCT CATEGORY CARDS — for parent landing pages
+   Used on: Access & Utility, End-to-End, Drainage, etc.
+   ============================================================ */
+
+.prod-cat-section {
+    background-color: var(--color-section-alt);
+    padding: var(--spacing-3xl) 0;
+}
+
+.prod-cat-header {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+    padding: 0 var(--container-padding);
+}
+
+.prod-cat-label {
+    display: inline-block;
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-sm);
+    position: relative;
+    padding-bottom: var(--spacing-sm);
+}
+
+.prod-cat-label::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+}
+
+.prod-cat-title {
+    font-size: var(--fs-2xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+}
+
+.prod-cat-underline {
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-accent-hover));
+    border-radius: var(--radius-sm);
+    margin: 0 auto var(--spacing-md);
+    transition: width var(--transition-slow);
+}
+
+.prod-cat-header:hover .prod-cat-underline {
+    width: 120px;
+}
+
+.prod-cat-desc {
+    font-size: var(--fs-base);
+    color: var(--color-text-secondary);
+    max-width: 640px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+/* Cards grid */
+.prod-cat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--spacing-lg);
+    padding: 0 var(--container-padding);
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+}
+
+/* Single product category card */
+.prod-cat-card {
+    background: var(--color-white);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    border: 1px solid var(--color-border-light);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                box-shadow 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                border-color 0.35s ease;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+}
+
+.prod-cat-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-2xl);
+    border-color: var(--color-accent);
+}
+
+/* Top accent bar on hover */
+.prod-cat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-accent-hover));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.prod-cat-card:hover::before {
+    transform: scaleX(1);
+}
+
+/* Image wrapper */
+.prod-cat-card-img {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: var(--color-section-bg);
+}
+
+.prod-cat-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.prod-cat-card:hover .prod-cat-card-img img {
+    transform: scale(1.1);
+}
+
+/* Card body */
+.prod-cat-card-body {
+    padding: 1.25rem 1.5rem 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.prod-cat-card-title {
+    font-family: var(--font-heading);
+    font-size: var(--fs-md);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5rem;
+    transition: color 0.2s ease;
+    line-height: 1.35;
+}
+
+.prod-cat-card:hover .prod-cat-card-title {
+    color: var(--color-accent);
+}
+
+.prod-cat-card-desc {
+    font-size: var(--fs-sm);
+    color: var(--color-text-muted);
+    line-height: 1.75;
+    margin-bottom: var(--spacing-md);
+    flex: 1;
+}
+
+/* CTA button inside card */
+.prod-cat-card-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 1.25rem;
+    background: transparent;
+    color: var(--color-accent);
+    font-family: var(--font-heading);
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border: 1.5px solid var(--color-accent);
+    border-radius: var(--radius-md);
+    transition: background 0.28s ease,
+                color 0.28s ease,
+                box-shadow 0.28s ease,
+                transform 0.28s ease;
+    text-decoration: none;
+    align-self: flex-start;
+    white-space: nowrap;
+}
+
+.prod-cat-card-btn svg {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.28s ease;
+}
+
+.prod-cat-card:hover .prod-cat-card-btn {
+    background: var(--color-accent);
+    color: #fff;
+    box-shadow: 0 6px 20px rgba(201, 169, 97, 0.35);
+    transform: translateX(2px);
+}
+
+.prod-cat-card:hover .prod-cat-card-btn svg {
+    transform: translateX(3px);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .prod-cat-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 540px) {
+    .prod-cat-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ── Extra: ensure mega-dropdown arrow pointer adapts to white bg ── */
+.sol-page .products-mega::after {
+    background: #fff;
+}
+
+/* ── Index page: mega panel bg stays white regardless of navbar state ── */
+.products-mega {
+    background: rgba(255, 255, 255, 0.99) !important;
+}
+
+/* ── Wider viewport: auto-size the panel to content ── */
+@media (min-width: 1200px) {
+    .products-mega {
+        width: 720px;
+    }
+    .mega-col-l1 {
+        flex: 0 0 240px;
+    }
+}
+
+/* ── Tighten the panel on mid-range screens ── */
+@media (max-width: 1100px) and (min-width: 769px) {
+    .products-mega {
+        width: 560px;
+        left: 0;
+        transform: translateX(-30%) translateY(-8px);
+    }
+    .nav-dropdown-item.is-open .products-mega {
+        transform: translateX(-30%) translateY(0);
+    }
+}
