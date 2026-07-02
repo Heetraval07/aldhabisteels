@@ -1518,12 +1518,12 @@ section:nth-child(odd) {
 }
 
 /* ============================================
-   PORTFOLIO GRID — 5 Cards
+   PORTFOLIO GRID — 6 Cards
 ============================================ */
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: var(--spacing-md);
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--spacing-sm);
     margin-top: var(--spacing-2xl);
 }
 
