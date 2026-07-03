@@ -129,83 +129,45 @@
                 <div class="careers-underline"></div>
             </div>
 
-            <div class="careers-grid animate-on-scroll">
-
-                <!-- Job 1 -->
-                <div class="job-card">
-                    <div class="job-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                            <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
-                            <path d="M7 7h4M7 10h6M7 13h3"/>
-                        </svg>
+            <!-- Poster Card -->
+            <div class="poster-wrap animate-on-scroll">
+                <div class="poster-card" id="posterCard" tabindex="0" role="button" aria-label="View hiring poster">
+                    <img src="images/hiring-poster.jpg" alt="We Are Hiring — Al Dhabi Steel LLC" class="poster-thumb" loading="lazy">
+                    <div class="poster-hover-overlay">
+                        <span class="poster-view-label">VIEW</span>
                     </div>
-                    <div class="job-card-body">
-                        <h3 class="job-title">Estimation Engineer</h3>
-                        <span class="job-exp">2–3 Years' Experience</span>
-                        <ul class="job-details">
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                                Stainless Steel Fabrication
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                                Male / Female
-                            </li>
-                        </ul>
-                        <a href="mailto:aldhabisteel@gmail.com?subject=Application: Estimation Engineer" class="job-apply-btn">Apply Now</a>
-                    </div>
-                </div>
-
-                <!-- Job 2 -->
-                <div class="job-card">
-                    <div class="job-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                            <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
-                        </svg>
-                    </div>
-                    <div class="job-card-body">
-                        <h3 class="job-title">Draftsman</h3>
-                        <span class="job-exp">2–3 Years' Experience</span>
-                        <ul class="job-details">
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                                Stainless Steel Fabrication
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                                Male / Female
-                            </li>
-                        </ul>
-                        <a href="mailto:aldhabisteel@gmail.com?subject=Application: Draftsman" class="job-apply-btn">Apply Now</a>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Send CV Block -->
-            <div class="careers-contact animate-on-scroll">
-                <div class="careers-contact-label">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                    Send Your CV Here
-                </div>
-                <div class="careers-contact-items">
-                    <a href="mailto:aldhabisteel@gmail.com" class="careers-contact-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                        aldhabisteel@gmail.com
-                    </a>
-                    <a href="tel:+971502566842" class="careers-contact-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-                        +971 50 2566 842 &nbsp;/&nbsp; +971 50 2566 872
-                    </a>
-                    <a href="https://www.aldhabisteel.com" target="_blank" rel="noopener noreferrer" class="careers-contact-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-                        www.aldhabisteel.com
-                    </a>
                 </div>
             </div>
 
         </div>
     </section>
+
+    <!-- Lightbox for poster -->
+    <div class="poster-lightbox" id="posterLightbox" role="dialog" aria-modal="true" aria-label="Hiring poster">
+        <div class="poster-lb-overlay" id="posterLbOverlay"></div>
+        <div class="poster-lb-inner">
+            <button class="poster-lb-close" id="posterLbClose" aria-label="Close">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <img src="images/hiring-poster.jpg" alt="We Are Hiring — Al Dhabi Steel LLC" class="poster-lb-img" draggable="false">
+        </div>
+    </div>
+
+    <script>
+    (function() {
+        var card = document.getElementById('posterCard');
+        var lb   = document.getElementById('posterLightbox');
+        var overlay = document.getElementById('posterLbOverlay');
+        var close   = document.getElementById('posterLbClose');
+        function openLb() { lb.classList.add('is-open'); document.body.style.overflow = 'hidden'; }
+        function closeLb() { lb.classList.remove('is-open'); document.body.style.overflow = ''; }
+        card.addEventListener('click', openLb);
+        card.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') openLb(); });
+        overlay.addEventListener('click', closeLb);
+        close.addEventListener('click', closeLb);
+        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLb(); });
+    })();
+    </script>
 
     <!-- CTA -->
     <section class="sol-cta">
