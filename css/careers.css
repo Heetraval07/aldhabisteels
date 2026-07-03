@@ -1,0 +1,287 @@
+/* ============================================
+   AL DHABI STEEL — Careers Page
+   ============================================ */
+
+.careers-section {
+    background-color: var(--color-section-bg);
+    padding: var(--spacing-3xl) 0;
+}
+
+.careers-inner {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+}
+
+/* Header */
+.careers-header {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+}
+
+.careers-label {
+    display: inline-block;
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-sm);
+    position: relative;
+    padding-bottom: var(--spacing-sm);
+}
+
+.careers-label::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+}
+
+.careers-title {
+    font-size: var(--fs-2xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+}
+
+.careers-underline {
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-accent-hover));
+    border-radius: var(--radius-sm);
+    margin: 0 auto;
+    transition: width var(--transition-slow);
+}
+
+.careers-header:hover .careers-underline {
+    width: 120px;
+}
+
+/* Jobs grid */
+.careers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-3xl);
+}
+
+/* Job card */
+.job-card {
+    background: var(--color-white);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-border-light);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                border-color 0.3s ease;
+    position: relative;
+}
+
+.job-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-accent-hover));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.job-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--color-accent);
+}
+
+.job-card:hover::before {
+    transform: scaleX(1);
+}
+
+/* Icon area */
+.job-card-icon {
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.job-card-icon svg {
+    width: 52px;
+    height: 52px;
+    color: var(--color-accent);
+}
+
+/* Card body */
+.job-card-body {
+    padding: 1.75rem 1.75rem 2rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.job-title {
+    font-family: var(--font-heading);
+    font-size: var(--fs-xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.4rem;
+}
+
+.job-exp {
+    display: inline-block;
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1.25rem;
+}
+
+.job-details {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.job-details li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+}
+
+.job-details li svg {
+    width: 16px;
+    height: 16px;
+    color: var(--color-accent);
+    flex-shrink: 0;
+}
+
+.job-apply-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1.75rem;
+    background: var(--color-accent);
+    color: #fff;
+    font-family: var(--font-heading);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    border-radius: 0.5rem;
+    border: 2px solid var(--color-accent);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-top: auto;
+    box-shadow: 0 4px 16px rgba(201, 169, 97, 0.25);
+}
+
+.job-apply-btn:hover {
+    background: var(--color-accent-hover);
+    border-color: var(--color-accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(201, 169, 97, 0.4);
+}
+
+/* Contact block */
+.careers-contact {
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+    border-radius: var(--radius-xl);
+    padding: 2.5rem 2.5rem 2.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.careers-contact::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: -60px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(201,169,97,0.12) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.careers-contact-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-heading);
+    font-size: var(--fs-lg);
+    font-weight: 700;
+    color: #fff;
+    background: rgba(201, 169, 97, 0.15);
+    border: 1px solid rgba(201, 169, 97, 0.3);
+    padding: 0.6rem 1.5rem;
+    border-radius: 2rem;
+}
+
+.careers-contact-label svg {
+    width: 20px;
+    height: 20px;
+    color: var(--color-accent);
+}
+
+.careers-contact-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem 2rem;
+}
+
+.careers-contact-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.careers-contact-item svg {
+    width: 17px;
+    height: 17px;
+    color: var(--color-accent);
+    flex-shrink: 0;
+}
+
+.careers-contact-item:hover {
+    color: var(--color-accent);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .careers-grid {
+        grid-template-columns: 1fr;
+    }
+    .careers-contact {
+        padding: 2rem 1.5rem;
+    }
+    .careers-contact-items {
+        flex-direction: column;
+        align-items: center;
+    }
+}
