@@ -318,52 +318,7 @@ img {
     box-shadow: 0 8px 24px rgba(201, 169, 97, 0.45);
 }
 
-/* Custom Cursor Styles */
-.custom-cursor {
-    width: 40px;
-    height: 40px;
-    border: 2px solid var(--color-accent);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999;
-    transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
-    transform: translate(-50%, -50%);
-    mix-blend-mode: difference;
-}
-
-.custom-cursor-dot {
-    width: 6px;
-    height: 6px;
-    background-color: var(--color-accent);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 10000;
-    transform: translate(-50%, -50%);
-    transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
-}
-
-.custom-cursor.cursor-hover {
-    width: 60px;
-    height: 60px;
-    border-color: rgba(201, 169, 97, 0.5);
-    background-color: rgba(201, 169, 97, 0.1);
-}
-
-.custom-cursor-dot.cursor-hover {
-    width: 0;
-    height: 0;
-    opacity: 0;
-}
-
-/* Hide custom cursor on touch devices */
-@media (hover: none) and (pointer: coarse) {
-    .custom-cursor,
-    .custom-cursor-dot {
-        display: none;
-    }
-}
+/* Custom Cursor Styles — disabled, using default browser cursor */
 
 .nav-toggle {
     display: none;

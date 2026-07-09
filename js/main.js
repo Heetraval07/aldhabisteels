@@ -1,4 +1,4 @@
-/**
+﻿/**
  * AL DHABI STEEL - Premium Industrial Website
  * Vanilla JavaScript - 2025-2026 Standards
  * Smooth scrolling, animations, counters, and interactivity
@@ -248,73 +248,7 @@
         });
     });
 
-    // Custom Cursor Effect
-    const cursor = document.createElement('div');
-    cursor.classList.add('custom-cursor');
-    document.body.appendChild(cursor);
-
-    const cursorDot = document.createElement('div');
-    cursorDot.classList.add('custom-cursor-dot');
-    document.body.appendChild(cursorDot);
-
-    let mouseX = 0;
-    let mouseY = 0;
-    let cursorX = 0;
-    let cursorY = 0;
-    let dotX = 0;
-    let dotY = 0;
-
-    // Track mouse position
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    });
-
-    // Smooth cursor animation
-    function animateCursor() {
-        // Smooth following for outer cursor
-        cursorX += (mouseX - cursorX) * 0.15;
-        cursorY += (mouseY - cursorY) * 0.15;
-        
-        // Instant position for dot
-        dotX = mouseX;
-        dotY = mouseY;
-
-        cursor.style.left = cursorX + 'px';
-        cursor.style.top = cursorY + 'px';
-        
-        cursorDot.style.left = dotX + 'px';
-        cursorDot.style.top = dotY + 'px';
-
-        requestAnimationFrame(animateCursor);
-    }
-    animateCursor();
-
-    // Add hover effect for interactive elements
-    const interactiveElements = document.querySelectorAll('a, button, .nav-link, .nav-cta, .btn, .service-item, .project-card, input, textarea');
-    
-    interactiveElements.forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            cursor.classList.add('cursor-hover');
-            cursorDot.classList.add('cursor-hover');
-        });
-        
-        el.addEventListener('mouseleave', () => {
-            cursor.classList.remove('cursor-hover');
-            cursorDot.classList.remove('cursor-hover');
-        });
-    });
-
-    // Hide custom cursor on mouse leave
-    document.addEventListener('mouseleave', () => {
-        cursor.style.opacity = '0';
-        cursorDot.style.opacity = '0';
-    });
-
-    document.addEventListener('mouseenter', () => {
-        cursor.style.opacity = '1';
-        cursorDot.style.opacity = '1';
-    });
+    // Custom Cursor Effect — disabled
 
     // Smooth Scroll for Hero CTAs
     const heroLinks = document.querySelectorAll('#hero .btn');
