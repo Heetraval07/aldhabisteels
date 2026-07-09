@@ -1040,7 +1040,7 @@
         opacity: 1;
         visibility: visible;
         pointer-events: none;
-        transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
     }
 
     .products-mega::before,
@@ -1049,7 +1049,7 @@
     }
 
     .nav-dropdown-item.is-open .products-mega {
-        max-height: 1200px;
+        max-height: 600px;
         pointer-events: auto;
         padding: 0.35rem 0.5rem;
         transform: none;
@@ -1069,43 +1069,21 @@
     /* Mobile: L2 accordion below each L1 item */
     .mega-item {
         width: 100%;
-        border-bottom: 1px solid rgba(201, 169, 97, 0.12);
-    }
-
-    .mega-item:last-child {
-        border-bottom: none;
     }
 
     .mega-parent-link {
-        text-align: left;
-        justify-content: space-between;
-        padding: 0.75rem 1rem;
+        text-align: center;
+        justify-content: center;
+        padding: 0.6rem 1rem;
         font-size: var(--fs-sm);
-        width: 100%;
     }
 
-    /* Show chevron on mobile so users know items are expandable */
     .mega-chevron {
-        display: block;
-        width: 14px;
-        height: 14px;
-        flex-shrink: 0;
-        transition: transform 0.25s ease;
-        color: var(--color-accent);
-    }
-
-    .mega-item.is-active .mega-chevron {
-        transform: rotate(90deg);
+        display: none;
     }
 
     .mega-sub-panel {
-        padding: 0 0 0.5rem 0;
-        background: rgba(201, 169, 97, 0.06);
-        border-radius: 0 0 0.5rem 0.5rem;
-        overflow: hidden;
-        max-height: 0;
-        display: block !important;
-        transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        padding: 0 0.5rem 0.25rem;
     }
 
     .mega-sub-header {
@@ -1113,34 +1091,20 @@
     }
 
     .mega-child-link {
-        text-align: left;
-        justify-content: flex-start;
-        padding: 0.5rem 1.5rem;
+        text-align: center;
+        justify-content: center;
+        padding: 0.5rem 0.75rem;
         font-size: var(--fs-xs);
-        display: flex;
-        opacity: 0;
-        transition: opacity 0.2s ease;
     }
 
     .mega-child-link::before {
-        display: inline-block;
-        content: '';
-        width: 4px;
-        height: 4px;
-        background: var(--color-accent);
-        border-radius: 50%;
-        margin-right: 0.6rem;
-        flex-shrink: 0;
+        display: none;
     }
 
-    /* Show sub-panel inline on mobile when parent is tapped */
+    /* Show sub-panel inline on mobile when parent is touched */
     .mega-item.is-active .mega-sub-panel {
-        max-height: 400px;
+        display: flex;
         animation: none;
-    }
-
-    .mega-item.is-active .mega-child-link {
-        opacity: 1;
     }
 }
 
