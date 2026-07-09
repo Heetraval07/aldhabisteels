@@ -218,7 +218,7 @@
             card.addEventListener('click', function() {
                 var src = card.getAttribute('data-certificate');
                 var img = card.querySelector('img');
-                if (src) openModal(src, img ? img.alt : '');
+                if (src) openModal(src, img — img.alt : '');
             });
         });
         if (modalClose)   modalClose.addEventListener('click', closeModal);
