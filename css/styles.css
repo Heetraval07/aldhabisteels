@@ -1476,9 +1476,9 @@ section:nth-child(odd) {
    PORTFOLIO GRID — 6 Cards (redesigned)
 ============================================ */
 .portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
+    display: flex;
+    flex-direction: row;
+    gap: 0.75rem;
     margin-top: var(--spacing-2xl);
 }
 
@@ -1579,19 +1579,127 @@ section:nth-child(odd) {
     height: 16px;
 }
 
-@media (max-width: 1024px) {
+/* Image card variant */
+.portfolio-card--img {
+    padding: 0;
+    overflow: hidden;
+    aspect-ratio: 3 / 4;
+    display: block;
+    flex: 1 1 0;
+    min-width: 0;
+    border-radius: 0.875rem;
+}
+
+.portfolio-card--img .portfolio-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.45s ease;
+}
+
+.portfolio-card--img:hover .portfolio-card-img {
+    transform: scale(1.07);
+}
+
+/* Always-visible base overlay with title at bottom */
+.portfolio-card--img .portfolio-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10,8,4,0.72) 0%, rgba(10,8,4,0.1) 45%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 1rem 0.9rem;
+    opacity: 1;
+    transition: background 0.35s ease;
+}
+
+.portfolio-card--img:hover .portfolio-card-overlay {
+    background: linear-gradient(to top, rgba(10,8,4,0.92) 0%, rgba(10,8,4,0.55) 55%, rgba(10,8,4,0.2) 100%);
+    opacity: 1;
+}
+
+/* Always-visible title at bottom (before hover) */
+.portfolio-card--img .portfolio-card-title {
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+    line-height: 1.3;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    transform: translateY(6px);
+    transition: transform 0.35s ease;
+}
+
+.portfolio-card--img:hover .portfolio-card-title {
+    color: #fff;
+    transform: translateY(0);
+}
+
+/* Logo — appears on hover */
+.portfolio-card-logo {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    border-radius: 50%;
+    margin-bottom: 0.65rem;
+    opacity: 0;
+    transform: translateY(-6px) scale(0.85);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.portfolio-card--img:hover .portfolio-card-logo {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Explore More pill — hidden by default, shows on hover */
+.portfolio-card-explore {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: var(--color-accent, #c9a84c);
+    color: #fff;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.38rem 0.9rem;
+    border-radius: 50px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s;
+    white-space: nowrap;
+}
+
+.portfolio-card--img:hover .portfolio-card-explore {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.portfolio-card-explore:hover {
+    background: #b8932f;
+}
+
+@media (max-width: 768px) {
     .portfolio-grid {
-        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+        padding-bottom: 0.75rem;
+    }
+    .portfolio-card--img {
+        flex: 0 0 160px;
     }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
     .portfolio-grid {
-        grid-template-columns: 1fr;
-        gap: 0.875rem;
+        gap: 0.75rem;
+    }
+    .portfolio-card--img {
+        flex: 0 0 150px;
     }
 }
-
 /* Panel wrapper — zero-height when closed, auto when open */
 .showcase-panel {
     max-height: 0;

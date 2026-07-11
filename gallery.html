@@ -8,25 +8,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/solution-page.css">
     <style>
         body { background: #f5f3ee; }
-        .gallery-hero {
-            background: var(--color-dark, #1a1a1a);
-            padding: 5rem 0 3rem;
-            text-align: center;
-            color: #fff;
-        }
-        .gallery-hero .section-label { color: #c9a84c; }
-        .gallery-hero .section-title { color: #fff; margin: 0.5rem 0; }
-        .gallery-hero .title-underline { margin: 0.75rem auto 0; }
         .gallery-section { padding: 3rem 0 4rem; }
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.25rem;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1rem;
         }
-        @media (max-width: 1024px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
-        @media (max-width: 640px)  { .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; } }
+        @media (max-width: 1200px) { .gallery-grid { grid-template-columns: repeat(4, 1fr); } }
+        @media (max-width: 768px)  { .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 0.75rem; } }
+        @media (max-width: 480px)  { .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; } }
         .gallery-item {
             background: #fff;
             border-radius: 10px;
@@ -54,27 +47,6 @@
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
-        .load-more-wrap {
-            text-align: center;
-            margin: 2.5rem 0 1rem;
-        }
-        .btn-load-more {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--color-gold, #c9a84c);
-            color: #fff;
-            border: none;
-            padding: 0.85rem 2.5rem;
-            border-radius: 50px;
-            font-family: 'IBM Plex Sans', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s, transform 0.2s;
-        }
-        .btn-load-more:hover { background: #b8932f; transform: translateY(-2px); }
-        .btn-load-more:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
         .gallery-count {
             text-align: center;
             font-family: 'IBM Plex Sans', sans-serif;
@@ -96,16 +68,104 @@
         .back-btn:hover { text-decoration: underline; }
     </style>
 </head>
-<body>
+<body class="sol-page">
 
-    <!-- Gallery Hero -->
-    <div class="gallery-hero">
-        <div class="container">
-            <span class="section-label">OUR WORK</span>
-            <h1 class="section-title">Product Gallery</h1>
-            <div class="title-underline"></div>
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="AL DHABI STEELS LLC logo" class="logo-image">
+                <span class="logo-text">AL DHABI STEELS LLC</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html#hero" class="nav-link">Home</a></li>
+                <li class="nav-dropdown-item" id="companyDropdownItem">
+                    <button class="nav-link nav-dropdown-trigger" id="companyTrigger" aria-haspopup="true" aria-expanded="false">
+                        Company
+                        <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <ul class="nav-dropdown" id="companyDropdown" role="menu">
+                        <li role="none"><a href="index.html#about"          class="nav-dropdown-link" role="menuitem">About</a></li>
+                        <li role="none"><a href="index.html#vision-mission" class="nav-dropdown-link" role="menuitem">Vision &amp; Mission</a></li>
+                        <li role="none"><a href="index.html#fabrication"    class="nav-dropdown-link" role="menuitem">Capabilities</a></li>
+                        <li role="none"><a href="index.html#certificates"   class="nav-dropdown-link" role="menuitem">Certificates</a></li>
+                    </ul>
+                </li>
+                <li class="nav-dropdown-item" id="productsDropdownItem">
+                    <button class="nav-link nav-dropdown-trigger" id="productsTrigger" aria-haspopup="true" aria-expanded="false">
+                        Products
+                        <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <ul class="products-mega" id="productsMega" role="menu" aria-label="Products menu">
+                        <li class="mega-col-l1" role="none">
+                            <ul style="list-style:none;padding:0;margin:0;">
+                                <li class="mega-item" role="none" data-l1="0"><a href="exotic-bespoken-design.html" class="mega-parent-link" data-l1="0" role="menuitem">Exotic Bespoken Design</a></li>
+                                <li class="mega-item" role="none" data-l1="1" data-has-children><a href="craft-engineered-design.html" class="mega-parent-link" data-l1="1" role="menuitem">Craft Engineered Design<svg class="mega-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></a></li>
+                                <li class="mega-item" role="none" data-l1="2" data-has-children><a href="access-utility-panels.html" class="mega-parent-link" data-l1="2" role="menuitem">Access &amp; Utility Service Panels<svg class="mega-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></a></li>
+                                <li class="mega-item" role="none" data-l1="3" data-has-children><a href="tailor-made-drainage.html" class="mega-parent-link" data-l1="3" role="menuitem">Tailor-Made Drainage Products<svg class="mega-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></a></li>
+                                <li class="mega-item" role="none" data-l1="4" data-has-children><a href="kitchen-catering-solutions.html" class="mega-parent-link" data-l1="4" role="menuitem">Kitchen Catering Solutions<svg class="mega-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></a></li>
+                                <li class="mega-item" role="none" data-l1="5" data-has-children><a href="end-to-end-range.html" class="mega-parent-link" data-l1="5" role="menuitem">End-to-End Range Products<svg class="mega-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></a></li>
+                            </ul>
+                        </li>
+                        <li class="mega-divider" role="none" aria-hidden="true"></li>
+                        <li class="mega-col-l2" role="none">
+                            <ul class="mega-sub-panel" data-parent="1" role="none">
+                                <li class="mega-sub-header" aria-hidden="true">Craft Engineered Design</li>
+                                <li role="none"><a href="craft-engineered-design.html" class="mega-child-link" data-l2="0" role="menuitem">All Customized</a></li>
+                            </ul>
+                            <ul class="mega-sub-panel" data-parent="2" role="none">
+                                <li class="mega-sub-header" aria-hidden="true">Access &amp; Utility Panels</li>
+                                <li role="none"><a href="manhole-covers.html" class="mega-child-link" data-l2="0" role="menuitem">Manhole Covers</a></li>
+                                <li role="none"><a href="floor-access-panels.html" class="mega-child-link" data-l2="1" role="menuitem">Floor Access Panels</a></li>
+                                <li role="none"><a href="wall-access-panels.html" class="mega-child-link" data-l2="2" role="menuitem">Wall Access Panels</a></li>
+                                <li role="none"><a href="roof-access-hatch.html" class="mega-child-link" data-l2="3" role="menuitem">Roof Access Hatch Covers</a></li>
+                            </ul>
+                            <ul class="mega-sub-panel" data-parent="3" role="none">
+                                <li class="mega-sub-header" aria-hidden="true">Drainage Products</li>
+                                <li role="none"><a href="channel-gratings.html" class="mega-child-link" data-l2="0" role="menuitem">Channel Gratings</a></li>
+                                <li role="none"><a href="slot-linear-drains.html" class="mega-child-link" data-l2="1" role="menuitem">Slot Drains / Linear Drains</a></li>
+                                <li role="none"><a href="shower-floor-drains.html" class="mega-child-link" data-l2="2" role="menuitem">Shower / Floor / Balcony Drains</a></li>
+                                <li role="none"><a href="cleanouts-rainwater.html" class="mega-child-link" data-l2="3" role="menuitem">Cleanouts / Rainwater Outlets</a></li>
+                            </ul>
+                            <ul class="mega-sub-panel" data-parent="4" role="none">
+                                <li class="mega-sub-header" aria-hidden="true">Kitchen Catering Solutions</li>
+                                <li role="none"><a href="villa-projects.html" class="mega-child-link" data-l2="0" role="menuitem">Villa Projects</a></li>
+                                <li role="none"><a href="industrial-kitchen-works.html" class="mega-child-link" data-l2="1" role="menuitem">Industrial Kitchen Works</a></li>
+                                <li role="none"><a href="restaurants-malls-projects.html" class="mega-child-link" data-l2="2" role="menuitem">Restaurants &amp; Malls Projects</a></li>
+                            </ul>
+                            <ul class="mega-sub-panel" data-parent="5" role="none">
+                                <li class="mega-sub-header" aria-hidden="true">End-to-End Range</li>
+                                <li role="none"><a href="general-solutions.html" class="mega-child-link" data-l2="0" role="menuitem">General Solutions</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="careers.html" class="nav-link">Careers</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="index.html#contact" class="nav-cta">Get a Quote</a>
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
         </div>
-    </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section class="sol-hero" style="height:auto; min-height:0; padding: 6rem 1.5rem 3rem;">
+        <div class="sol-hero-content">
+            <nav class="sol-breadcrumb" aria-label="Breadcrumb">
+                <a href="index.html">Home</a>
+                <span class="sol-breadcrumb-sep">›</span>
+                <span class="sol-breadcrumb-current">Gallery</span>
+            </nav>
+            <h1 class="sol-hero-title">Product Gallery</h1>
+            <div class="sol-hero-bar"></div>
+        </div>
+    </section>
 
     <!-- Gallery Section -->
     <section class="gallery-section">
@@ -114,249 +174,118 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><polyline points="15 18 9 12 15 6"/></svg>
                 Back to Home
             </a>
-            <div class="gallery-count" id="galleryCount">Showing 50 of 200</div>
-            <div class="gallery-grid" id="galleryGrid">
+            <div class="gallery-count">90 items across all categories</div>
+            <div class="gallery-grid">
+
+                <!-- Row 1–3: Exotic Bespoken / Fitout (6) + General Decorative (6) + Craft Engineered (6) -->
                 <div class="gallery-item"><img src="images/Slide-images/Fitout Solutions/page_32_img_1.jpeg" alt="Bespoke Steel Fitout" loading="lazy"><div class="gallery-item-name">Bespoke Steel Fitout</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Fitout Solutions/page_32_img_4.jpeg" alt="Architectural Steel Detail" loading="lazy"><div class="gallery-item-name">Architectural Steel Detail</div></div>
                 <div class="gallery-item"><img src="images/Slide-images/Fitout Solutions/page_33_img_1.jpeg" alt="Custom Fitout Design" loading="lazy"><div class="gallery-item-name">Custom Fitout Design</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Fitout Solutions/page_33_img_2.jpeg" alt="Interior Steel Feature" loading="lazy"><div class="gallery-item-name">Interior Steel Feature</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Fitout Solutions/page_33_img_4.jpeg" alt="Bespoke Interior Work" loading="lazy"><div class="gallery-item-name">Bespoke Interior Work</div></div>
                 <div class="gallery-item"><img src="images/Slide-images/Fitout Solutions/page_34_img_1.jpeg" alt="Steel Fitout Installation" loading="lazy"><div class="gallery-item-name">Steel Fitout Installation</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Fitout Solutions/page_34_img_2.jpeg" alt="Custom Steel Cladding" loading="lazy"><div class="gallery-item-name">Custom Steel Cladding</div></div>
                 <div class="gallery-item"><img src="images/Slide-images/Fitout Solutions/page_34_img_5.jpeg" alt="Decorative Steel Panel" loading="lazy"><div class="gallery-item-name">Decorative Steel Panel</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Fitout Solutions/page_35_img_2.jpeg" alt="Steel Design Feature" loading="lazy"><div class="gallery-item-name">Steel Design Feature</div></div>
                 <div class="gallery-item"><img src="images/Slide-images/Fitout Solutions/page_36_img_3.jpeg" alt="Bespoke Steel Structure" loading="lazy"><div class="gallery-item-name">Bespoke Steel Structure</div></div>
                 <div class="gallery-item"><img src="images/Slide-images/General Solutions/Decorative Ceiling Feature.jpeg" alt="Decorative Ceiling Feature" loading="lazy"><div class="gallery-item-name">Decorative Ceiling Feature</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/General Solutions/Decorative Water Feature.jpeg" alt="Decorative Water Feature" loading="lazy"><div class="gallery-item-name">Decorative Water Feature</div></div>
                 <div class="gallery-item"><img src="images/Slide-images/General Solutions/Decorative Screen Panel.jpeg" alt="Decorative Screen Panel" loading="lazy"><div class="gallery-item-name">Decorative Screen Panel</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/General Solutions/Decorative Wall Design.jpg" alt="Decorative Wall Design" loading="lazy"><div class="gallery-item-name">Decorative Wall Design</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/General Solutions/Decorative Window Panel.jpeg" alt="Decorative Window Panel" loading="lazy"><div class="gallery-item-name">Decorative Window Panel</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/General Solutions/Decorative Swimming Pool Handrail.jpg" alt="Decorative Swimming Pool Handrail" loading="lazy"><div class="gallery-item-name">Decorative Swimming Pool Handrail</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/General Solutions/Decorative Display Shelf.jpeg" alt="Decorative Display Shelf" loading="lazy"><div class="gallery-item-name">Decorative Display Shelf</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/General Solutions/Decorative Book Shelf.jpeg" alt="Decorative Book Shelf" loading="lazy"><div class="gallery-item-name">Decorative Book Shelf</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/General Solutions/Decorative Bollard.jpeg" alt="Decorative Bollard" loading="lazy"><div class="gallery-item-name">Decorative Bollard</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/General Solutions/Decorative AC Grill.jpeg" alt="Decorative AC Grill" loading="lazy"><div class="gallery-item-name">Decorative AC Grill</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/General Solutions/Decorative Customized Board.jpg" alt="Decorative Customized Board" loading="lazy"><div class="gallery-item-name">Decorative Customized Board</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/General Solutions/Laundry Cabinet Unit.jpeg" alt="Laundry Cabinet Unit" loading="lazy"><div class="gallery-item-name">Laundry Cabinet Unit</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/General Solutions/Decorative Water Feature.jpeg" alt="Decorative Water Feature" loading="lazy"><div class="gallery-item-name">Decorative Water Feature</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/General Solutions/Decorative Swimming Pool Handrail.jpg" alt="Decorative Swimming Pool Handrail" loading="lazy"><div class="gallery-item-name">Decorative Pool Handrail</div></div>
                 <div class="gallery-item"><img src="images/Slide-images/General Solutions/Premium TV Feature Wall.jpeg" alt="Premium TV Feature Wall" loading="lazy"><div class="gallery-item-name">Premium TV Feature Wall</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/General Solutions/Decorative Wall Design.jpg" alt="Decorative Wall Design" loading="lazy"><div class="gallery-item-name">Decorative Wall Design</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/General Solutions/Decorative Bollard.jpeg" alt="Decorative Bollard" loading="lazy"><div class="gallery-item-name">Decorative Bollard</div></div>
+                <!-- Row 3: Craft Engineered -->
+                <div class="gallery-item"><img src="images/Slide-images/Cutomized Manufacturing/Glass Handrail with Top Rail.jpeg" alt="Glass Handrail with Top Rail" loading="lazy"><div class="gallery-item-name">Glass Handrail with Top Rail</div></div>
                 <div class="gallery-item"><img src="images/Slide-images/Cutomized Manufacturing/Curved Water Feature.jpg" alt="Curved Water Feature" loading="lazy"><div class="gallery-item-name">Curved Water Feature</div></div>
                 <div class="gallery-item"><img src="images/Slide-images/Cutomized Manufacturing/Entrance Canopy.jpeg" alt="Entrance Canopy" loading="lazy"><div class="gallery-item-name">Entrance Canopy</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Cutomized Manufacturing/Entrance Cladding.jpeg" alt="Entrance Cladding" loading="lazy"><div class="gallery-item-name">Entrance Cladding</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Cutomized Manufacturing/Glass Handrail with Top Rail.jpeg" alt="Glass Handrail with Top Rail" loading="lazy"><div class="gallery-item-name">Glass Handrail with Top Rail</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Cutomized Manufacturing/Staircase Handrail.png" alt="Staircase Handrail" loading="lazy"><div class="gallery-item-name">Staircase Handrail</div></div>
                 <div class="gallery-item"><img src="images/Slide-images/Cutomized Manufacturing/Swimming Pool Railing.jpeg" alt="Swimming Pool Railing" loading="lazy"><div class="gallery-item-name">Swimming Pool Railing</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/Cutomized Manufacturing/Staircase Handrail.png" alt="Staircase Handrail" loading="lazy"><div class="gallery-item-name">Staircase Handrail</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/Cutomized Manufacturing/Entrance Cladding.jpeg" alt="Entrance Cladding" loading="lazy"><div class="gallery-item-name">Entrance Cladding</div></div>
+                <!-- Row 4: More Craft Engineered -->
+                <div class="gallery-item"><img src="images/Slide-images/Cutomized Manufacturing/Design Partiation.jpeg" alt="Design Partition" loading="lazy"><div class="gallery-item-name">Design Partition</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/Cutomized Manufacturing/Cladding.jpeg" alt="Cladding" loading="lazy"><div class="gallery-item-name">Cladding</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/Cutomized Manufacturing/SS Bollards.jpg" alt="Stainless Steel Bollards" loading="lazy"><div class="gallery-item-name">Stainless Steel Bollards</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/Cutomized Manufacturing/Display UNit.jpeg" alt="Display Unit" loading="lazy"><div class="gallery-item-name">Display Unit</div></div>
                 <div class="gallery-item"><img src="images/Slide-images/Cutomized Manufacturing/Swimming Pool Step.jpeg" alt="Swimming Pool Step" loading="lazy"><div class="gallery-item-name">Swimming Pool Step</div></div>
                 <div class="gallery-item"><img src="images/Slide-images/Cutomized Manufacturing/Handrail.jpeg" alt="Handrail" loading="lazy"><div class="gallery-item-name">Handrail</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Cutomized Manufacturing/Wall Mounted Handrail.jpeg" alt="Wall Mounted Handrail" loading="lazy"><div class="gallery-item-name">Wall Mounted Handrail</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Cutomized Manufacturing/Ramp Handrail.jpg" alt="Ramp Handrail" loading="lazy"><div class="gallery-item-name">Ramp Handrail</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Cutomized Manufacturing/Design Partiation.jpeg" alt="Design Partition" loading="lazy"><div class="gallery-item-name">Design Partition</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Cutomized Manufacturing/Ceiling Tile.jpeg" alt="Ceiling Tile" loading="lazy"><div class="gallery-item-name">Ceiling Tile</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Cutomized Manufacturing/Cladding.jpeg" alt="Cladding" loading="lazy"><div class="gallery-item-name">Cladding</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Cutomized Manufacturing/Display UNit.jpeg" alt="Display Unit" loading="lazy"><div class="gallery-item-name">Display Unit</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Cutomized Manufacturing/SS Wall Corner Guard.png" alt="Stainless Steel Wall Corner Guard" loading="lazy"><div class="gallery-item-name">Stainless Steel Wall Corner Guard</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Cutomized Manufacturing/SS Tile Trim.jpeg" alt="Stainless Steel Tile Trim" loading="lazy"><div class="gallery-item-name">Stainless Steel Tile Trim</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Cutomized Manufacturing/SS Bollards.jpg" alt="Stainless Steel Bollards" loading="lazy"><div class="gallery-item-name">Stainless Steel Bollards</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Cutomized Manufacturing/Cycle Stand.jpeg" alt="Cycle Stand" loading="lazy"><div class="gallery-item-name">Cycle Stand</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Cutomized Manufacturing/Sign Board.jpeg" alt="Sign Board" loading="lazy"><div class="gallery-item-name">Sign Board</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Cutomized Manufacturing/Storage Shelving.jpeg" alt="Storage Shelving" loading="lazy"><div class="gallery-item-name">Storage Shelving</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Cutomized Manufacturing/Storage Bin.jpeg" alt="Storage Bin" loading="lazy"><div class="gallery-item-name">Storage Bin</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Cutomized Manufacturing/Sink Unit.jpeg" alt="Sink Unit" loading="lazy"><div class="gallery-item-name">Sink Unit</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Cutomized Manufacturing/Wall Fencing.jpeg" alt="Wall Fencing" loading="lazy"><div class="gallery-item-name">Wall Fencing</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Cutomized Manufacturing/Book Shelf.jpeg" alt="Book Shelf" loading="lazy"><div class="gallery-item-name">Book Shelf</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Cutomized Manufacturing/Potwash Area.jpeg" alt="Potwash Station" loading="lazy"><div class="gallery-item-name">Potwash Station</div></div>
+                <!-- Row 5: Kitchen Villa -->
                 <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Villa/Island Kitchen Unit.jpeg" alt="Island Kitchen Unit" loading="lazy"><div class="gallery-item-name">Island Kitchen Unit</div></div>
                 <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Villa/Desinged Kitchen units.jpeg" alt="Designed Kitchen Units" loading="lazy"><div class="gallery-item-name">Designed Kitchen Units</div></div>
                 <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Villa/Kitchen Cabinet.jpeg" alt="Kitchen Cabinet" loading="lazy"><div class="gallery-item-name">Kitchen Cabinet</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Villa/Kitchen Equipments.jpeg" alt="Kitchen Equipments" loading="lazy"><div class="gallery-item-name">Kitchen Equipments</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Villa/Glass Cabinet.jpeg" alt="Glass Cabinet" loading="lazy"><div class="gallery-item-name">Glass Cabinet</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Villa/Drawer Unit.jpeg" alt="Drawer Unit" loading="lazy"><div class="gallery-item-name">Drawer Unit</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Villa/SS BBQ Unit.jpeg" alt="SS BBQ Unit" loading="lazy"><div class="gallery-item-name">SS BBQ Unit</div></div>
                 <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Villa/Pantry Unit.jpeg" alt="Pantry Unit" loading="lazy"><div class="gallery-item-name">Pantry Unit</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Villa/Office Pantry Unit.jpeg" alt="Office Pantry Unit" loading="lazy"><div class="gallery-item-name">Office Pantry Unit</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Villa/Laundry Cabinets.jpeg" alt="Laundry Cabinets" loading="lazy"><div class="gallery-item-name">Laundry Cabinets</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Villa/Laundry Unit.jpeg" alt="Laundry Unit" loading="lazy"><div class="gallery-item-name">Laundry Unit</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Villa/Outdoor Cabinet.jpeg" alt="Outdoor Cabinet" loading="lazy"><div class="gallery-item-name">Outdoor Cabinet</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Villa/BBQ Unit.jpeg" alt="BBQ Unit" loading="lazy"><div class="gallery-item-name">BBQ Unit</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Villa/SS BBQ Unit.jpeg" alt="Stainless Steel BBQ Unit" loading="lazy"><div class="gallery-item-name">Stainless Steel BBQ Unit</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Villa/POwder Coated BBQ Unit.jpeg" alt="Powder Coated BBQ Unit" loading="lazy"><div class="gallery-item-name">Powder Coated BBQ Unit</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Villa/Sink CAbinet.jpeg" alt="Sink Cabinet" loading="lazy"><div class="gallery-item-name">Sink Cabinet</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Villa/SS Base Cabinet.jpeg" alt="Stainless Steel Base Cabinet" loading="lazy"><div class="gallery-item-name">Stainless Steel Base Cabinet</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Villa/SS Wall Cabinet.jpeg" alt="Stainless Steel Wall Cabinet" loading="lazy"><div class="gallery-item-name">Stainless Steel Wall Cabinet</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Villa/Glass Cabinet.jpeg" alt="Glass Cabinet" loading="lazy"><div class="gallery-item-name">Glass Cabinet</div></div>
+                <!-- Row 6: Kitchen Restaurant -->
                 <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Restaurant/Cafe Unit.jpeg" alt="Cafe Unit" loading="lazy"><div class="gallery-item-name">Cafe Unit</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Restaurant/Kitchen Cabinet.jpg" alt="Kitchen Cabinet" loading="lazy"><div class="gallery-item-name">Kitchen Cabinet</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Restaurant/Wall Cabinet.jpg" alt="Wall Cabinet" loading="lazy"><div class="gallery-item-name">Wall Cabinet</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Restaurant/Wall Cladding with Wall Shelf.jpeg" alt="Wall Cladding with Shelf" loading="lazy"><div class="gallery-item-name">Wall Cladding with Shelf</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Restaurant/Base Cabinet.jpeg" alt="Base Cabinet" loading="lazy"><div class="gallery-item-name">Base Cabinet</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Restaurant/Cabinet with Drawer.jpg" alt="Cabinet with Drawer" loading="lazy"><div class="gallery-item-name">Cabinet with Drawer</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Restaurant/Oven Shelving.jpg" alt="Oven Shelving" loading="lazy"><div class="gallery-item-name">Oven Shelving</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Restaurant/Upright Shelf.jpeg" alt="Upright Shelf" loading="lazy"><div class="gallery-item-name">Upright Shelf</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Restaurant/Storage Rack.jpeg" alt="Storage Rack" loading="lazy"><div class="gallery-item-name">Storage Rack</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Restaurant/Storage Locker.jpeg" alt="Storage Locker" loading="lazy"><div class="gallery-item-name">Storage Locker</div></div>
                 <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Restaurant/Cooking Range.jpg" alt="Cooking Range" loading="lazy"><div class="gallery-item-name">Cooking Range</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Restaurant/Indian Cooking Range.jpeg" alt="Indian Cooking Range" loading="lazy"><div class="gallery-item-name">Indian Cooking Range</div></div>
                 <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Restaurant/Kitchen Hood.jpg" alt="Kitchen Hood" loading="lazy"><div class="gallery-item-name">Kitchen Hood</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Restaurant/Hot Plate.jpeg" alt="Hot Plate" loading="lazy"><div class="gallery-item-name">Hot Plate</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Restaurant/Fish Display.jpg" alt="Fish Display" loading="lazy"><div class="gallery-item-name">Fish Display</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Restaurant/Single Bowl Sink Table.jpeg" alt="Single Bowl Sink Table" loading="lazy"><div class="gallery-item-name">Single Bowl Sink Table</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Restaurant/SS Double Bowl Sink.jpeg" alt="Stainless Steel Double Bowl Sink" loading="lazy"><div class="gallery-item-name">Stainless Steel Double Bowl Sink</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Restaurant/Wash Through.jpg" alt="Wash Through" loading="lazy"><div class="gallery-item-name">Wash Through</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Restaurant/SS Double Bowl Sink.jpeg" alt="SS Double Bowl Sink" loading="lazy"><div class="gallery-item-name">SS Double Bowl Sink</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Restaurant/Wall Cladding with Wall Shelf.jpeg" alt="Wall Cladding with Shelf" loading="lazy"><div class="gallery-item-name">Wall Cladding with Shelf</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Restaurant/Indian Cooking Range.jpeg" alt="Indian Cooking Range" loading="lazy"><div class="gallery-item-name">Indian Cooking Range</div></div>
+                <!-- Row 7: Kitchen Industrial -->
                 <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Industrial/Industrial Kitchen Hood.jpg" alt="Industrial Kitchen Hood" loading="lazy"><div class="gallery-item-name">Industrial Kitchen Hood</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Industrial/Cooking Range.jpeg" alt="Cooking Range" loading="lazy"><div class="gallery-item-name">Cooking Range</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Industrial/Marble Top Tandoori Unit.jpg" alt="Marble Top Tandoori Unit" loading="lazy"><div class="gallery-item-name">Marble Top Tandoori Unit</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Industrial/Base Cabinet with working Table.jpeg" alt="Base Cabinet with Working Table" loading="lazy"><div class="gallery-item-name">Base Cabinet with Working Table</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Industrial/Stainless Steel Bench.jpg" alt="Stainless Steel Bench" loading="lazy"><div class="gallery-item-name">Stainless Steel Bench</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Industrial/Single Bowl Sink Table.jpeg" alt="Single Bowl Sink Table" loading="lazy"><div class="gallery-item-name">Single Bowl Sink Table</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Industrial/SS Double Bowl Sink.jpeg" alt="Stainless Steel Double Bowl Sink" loading="lazy"><div class="gallery-item-name">Stainless Steel Double Bowl Sink</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Industrial/Sink Cabinet.jpeg" alt="Sink Cabinet" loading="lazy"><div class="gallery-item-name">Sink Cabinet</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Industrial/Sink Table.jpeg" alt="Sink Table" loading="lazy"><div class="gallery-item-name">Sink Table</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Industrial/Sink Unit.jpeg" alt="Sink Unit" loading="lazy"><div class="gallery-item-name">Sink Unit</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Industrial/Handwash Sink.jpeg" alt="Handwash Sink" loading="lazy"><div class="gallery-item-name">Handwash Sink</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Industrial/Wall Mounted Hand Wash.jpeg" alt="Wall Mounted Handwash" loading="lazy"><div class="gallery-item-name">Wall Mounted Handwash</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Industrial/Cold Room Storage Rack.jpeg" alt="Cold Room Storage Rack" loading="lazy"><div class="gallery-item-name">Cold Room Storage Rack</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Industrial/Storage Cabinet.jpg" alt="Storage Cabinet" loading="lazy"><div class="gallery-item-name">Storage Cabinet</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Industrial/Storage Rack with Bin.jpeg" alt="Storage Rack with Bin" loading="lazy"><div class="gallery-item-name">Storage Rack with Bin</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Industrial/Cooking Range.jpeg" alt="Industrial Cooking Range" loading="lazy"><div class="gallery-item-name">Industrial Cooking Range</div></div>
                 <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Industrial/Fish Display Table.jpeg" alt="Fish Display Table" loading="lazy"><div class="gallery-item-name">Fish Display Table</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Industrial/Garbage Waste Unit.jpeg" alt="Garbage Waste Unit" loading="lazy"><div class="gallery-item-name">Garbage Waste Unit</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Industrial/Service Trolley.jpg" alt="Service Trolley" loading="lazy"><div class="gallery-item-name">Service Trolley</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Industrial/Deforest Trolley.jpeg" alt="Defrost Trolley" loading="lazy"><div class="gallery-item-name">Defrost Trolley</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Industrial/Display Unit.jpeg" alt="Display Unit" loading="lazy"><div class="gallery-item-name">Display Unit</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Industrial/Cold Room Storage Rack.jpeg" alt="Cold Room Storage Rack" loading="lazy"><div class="gallery-item-name">Cold Room Storage Rack</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Industrial/Stainless Steel Bench.jpg" alt="Stainless Steel Bench" loading="lazy"><div class="gallery-item-name">Stainless Steel Bench</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/Kitchen Solutions/Industrial/Marble Top Tandoori Unit.jpg" alt="Marble Top Tandoori Unit" loading="lazy"><div class="gallery-item-name">Marble Top Tandoori Unit</div></div>
+                <!-- Row 8: End-to-End General Solutions -->
                 <div class="gallery-item"><img src="images/Slide-images/End To End/General Solutions/Glass Handrail.jpeg" alt="Glass Handrail" loading="lazy"><div class="gallery-item-name">Glass Handrail</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/End To End/General Solutions/Handrail with Glass Partition.jpeg" alt="Handrail with Glass Partition" loading="lazy"><div class="gallery-item-name">Handrail with Glass Partition</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/End To End/General Solutions/Handrail with Wooden Handle.jpeg" alt="Handrail with Wooden Handle" loading="lazy"><div class="gallery-item-name">Handrail with Wooden Handle</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/End To End/General Solutions/SS Handrail.jpeg" alt="Stainless Steel Handrail" loading="lazy"><div class="gallery-item-name">Stainless Steel Handrail</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/End To End/General Solutions/Swimming Pool Handrail.jpeg" alt="Swimming Pool Handrail" loading="lazy"><div class="gallery-item-name">Swimming Pool Handrail</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/End To End/General Solutions/Swimming Pool Platform.jpeg" alt="Swimming Pool Platform" loading="lazy"><div class="gallery-item-name">Swimming Pool Platform</div></div>
                 <div class="gallery-item"><img src="images/Slide-images/End To End/General Solutions/Staircase Handrail.png" alt="Staircase Handrail" loading="lazy"><div class="gallery-item-name">Staircase Handrail</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/End To End/General Solutions/Ladder.jpeg" alt="Ladder" loading="lazy"><div class="gallery-item-name">Ladder</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/End To End/General Solutions/Platform for Roof.jpeg" alt="Platform for Roof" loading="lazy"><div class="gallery-item-name">Platform for Roof</div></div>
                 <div class="gallery-item"><img src="images/Slide-images/End To End/General Solutions/Sliding Door.jpeg" alt="Sliding Door" loading="lazy"><div class="gallery-item-name">Sliding Door</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/End To End/General Solutions/Marble Top.jpeg" alt="Marble Top" loading="lazy"><div class="gallery-item-name">Marble Top</div></div>
                 <div class="gallery-item"><img src="images/Slide-images/End To End/General Solutions/EV Charging Unit.jpg" alt="EV Charging Unit" loading="lazy"><div class="gallery-item-name">EV Charging Unit</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/End To End/General Solutions/Floor Mounting Bollord.jpeg" alt="Floor Mounting Bollard" loading="lazy"><div class="gallery-item-name">Floor Mounting Bollard</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/End To End/General Solutions/Storage Shelving.jpeg" alt="Storage Shelving" loading="lazy"><div class="gallery-item-name">Storage Shelving</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/End To End/General Solutions/Powder Coated Cabinet.jpg" alt="Powder Coated Cabinet" loading="lazy"><div class="gallery-item-name">Powder Coated Cabinet</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/End To End/General Solutions/Swimming Pool Handrail.jpeg" alt="Swimming Pool Handrail" loading="lazy"><div class="gallery-item-name">Swimming Pool Handrail</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/End To End/General Solutions/Handrail with Glass Partition.jpeg" alt="Handrail with Glass Partition" loading="lazy"><div class="gallery-item-name">Handrail with Glass Partition</div></div>
+                <!-- Row 9: Channel Gratings -->
                 <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Channel Gratings/Channel Grating.jpeg" alt="Channel Grating" loading="lazy"><div class="gallery-item-name">Channel Grating</div></div>
                 <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Channel Gratings/Heavy Duty Grating.jpeg" alt="Heavy Duty Grating" loading="lazy"><div class="gallery-item-name">Heavy Duty Grating</div></div>
                 <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Channel Gratings/Heel Guard Grating.jpeg" alt="Heel Guard Grating" loading="lazy"><div class="gallery-item-name">Heel Guard Grating</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Channel Gratings/Industrial Floor Grating.jpeg" alt="Industrial Floor Grating" loading="lazy"><div class="gallery-item-name">Industrial Floor Grating</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Channel Gratings/Ladder Type Grating.jpg" alt="Ladder Type Grating" loading="lazy"><div class="gallery-item-name">Ladder Type Grating</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Channel Gratings/Slotted Channel.jpeg" alt="Slotted Channel" loading="lazy"><div class="gallery-item-name">Slotted Channel</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Channel Gratings/SS Channel with Soltted Tray.jpeg" alt="Stainless Steel Channel with Slotted Tray" loading="lazy"><div class="gallery-item-name">Stainless Steel Channel with Slotted Tray</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Channel Gratings/SS Ladder Type Grating with Frame.jpeg" alt="Stainless Steel Ladder Type Grating with Frame" loading="lazy"><div class="gallery-item-name">Stainless Steel Ladder Type Grating with Frame</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Channel Gratings/Channel with Heel Guard.jpeg" alt="Channel with Heel Guard" loading="lazy"><div class="gallery-item-name">Channel with Heel Guard</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Channel Gratings/Channel with slot Grating.jpeg" alt="Channel with Slot Grating" loading="lazy"><div class="gallery-item-name">Channel with Slot Grating</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Channel Gratings/Channel with Non Slip Grating.jpg" alt="Channel with Non-Slip Grating" loading="lazy"><div class="gallery-item-name">Channel with Non-Slip Grating</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Channel Gratings/Angle Frame with Ladder Type Grating.jpeg" alt="Angle Frame with Ladder Grating" loading="lazy"><div class="gallery-item-name">Angle Frame with Ladder Grating</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Channel Gratings/SS Channel with Soltted Tray.jpeg" alt="SS Channel with Slotted Tray" loading="lazy"><div class="gallery-item-name">SS Channel Slotted Tray</div></div>
                 <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Channel Gratings/Industrial Gratings.jpeg" alt="Industrial Gratings" loading="lazy"><div class="gallery-item-name">Industrial Gratings</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Channel Gratings/Industrial Floor Drain.jpeg" alt="Industrial Floor Drain" loading="lazy"><div class="gallery-item-name">Industrial Floor Drain</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Channel Gratings/Amul Trap.jpeg" alt="Amul Trap" loading="lazy"><div class="gallery-item-name">Amul Trap</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Slot Drain and Linear Drain/Linear Drain.jpeg" alt="Linear Drain" loading="lazy"><div class="gallery-item-name">Linear Drain</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Channel Gratings/Industrial Floor Grating.jpeg" alt="Industrial Floor Grating" loading="lazy"><div class="gallery-item-name">Industrial Floor Grating</div></div>
+                <!-- Row 10: Slot / Linear Drains -->
                 <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Slot Drain and Linear Drain/Linear Slot Drain.jpeg" alt="Linear Slot Drain" loading="lazy"><div class="gallery-item-name">Linear Slot Drain</div></div>
                 <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Slot Drain and Linear Drain/Double Slot Drain.jpeg" alt="Double Slot Drain" loading="lazy"><div class="gallery-item-name">Double Slot Drain</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Slot Drain and Linear Drain/SS Double Slot Drain.jpeg" alt="Stainless Steel Double Slot Drain" loading="lazy"><div class="gallery-item-name">Stainless Steel Double Slot Drain</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Slot Drain and Linear Drain/SS Shower Drain.jpeg" alt="Stainless Steel Shower Drain" loading="lazy"><div class="gallery-item-name">Stainless Steel Shower Drain</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Slot Drain and Linear Drain/SS Slotted Drain.jpeg" alt="Stainless Steel Slotted Drain" loading="lazy"><div class="gallery-item-name">Stainless Steel Slotted Drain</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Slot Drain and Linear Drain/Radius Type Slot Drain.jpeg" alt="Radius Type Slot Drain" loading="lazy"><div class="gallery-item-name">Radius Type Slot Drain</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Slot Drain and Linear Drain/SS Double Slot Drain.jpeg" alt="SS Double Slot Drain" loading="lazy"><div class="gallery-item-name">SS Double Slot Drain</div></div>
                 <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Slot Drain and Linear Drain/Recessed Floor Drain.jpeg" alt="Recessed Floor Drain" loading="lazy"><div class="gallery-item-name">Recessed Floor Drain</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Slot Drain and Linear Drain/Shower Drain Recessed.jpeg" alt="Shower Drain Recessed" loading="lazy"><div class="gallery-item-name">Shower Drain Recessed</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Slot Drain and Linear Drain/Industrial Floor Drain.jpeg" alt="Industrial Floor Drain" loading="lazy"><div class="gallery-item-name">Industrial Floor Drain</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Shower - Floor - Balcony/1. Round Floor Drain.jpeg" alt="Round Floor Drain" loading="lazy"><div class="gallery-item-name">Round Floor Drain</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Slot Drain and Linear Drain/SS Shower Drain.jpeg" alt="SS Shower Drain" loading="lazy"><div class="gallery-item-name">SS Shower Drain</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Slot Drain and Linear Drain/Linear Drain.jpeg" alt="Linear Drain" loading="lazy"><div class="gallery-item-name">Linear Drain</div></div>
+                <!-- Row 11: Shower / Floor / Balcony Drains -->
+                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Shower - Floor - Balcony/SS Floor Drain  Cover.jpeg" alt="SS Floor Drain Cover" loading="lazy"><div class="gallery-item-name">SS Floor Drain Cover</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Shower - Floor - Balcony/SS Floor Trap.jpeg" alt="SS Floor Trap" loading="lazy"><div class="gallery-item-name">SS Floor Trap</div></div>
                 <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Shower - Floor - Balcony/Balcony Drain.jpeg" alt="Balcony Drain" loading="lazy"><div class="gallery-item-name">Balcony Drain</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Shower - Floor - Balcony/Slotted Floor Drain.jpeg" alt="Slotted Floor Drain" loading="lazy"><div class="gallery-item-name">Slotted Floor Drain</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Shower - Floor - Balcony/SS Recessed Drain.jpeg" alt="SS Recessed Drain" loading="lazy"><div class="gallery-item-name">SS Recessed Drain</div></div>
                 <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Shower - Floor - Balcony/Gully Trap.jpeg" alt="Gully Trap" loading="lazy"><div class="gallery-item-name">Gully Trap</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Shower - Floor - Balcony/SS Floor Drain  Cover.jpeg" alt="Stainless Steel Floor Drain Cover" loading="lazy"><div class="gallery-item-name">Stainless Steel Floor Drain Cover</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Shower - Floor - Balcony/SS Floor Trap.jpeg" alt="Stainless Steel Floor Trap" loading="lazy"><div class="gallery-item-name">Stainless Steel Floor Trap</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Shower - Floor - Balcony/SS Recessed Drain.jpeg" alt="Stainless Steel Recessed Drain" loading="lazy"><div class="gallery-item-name">Stainless Steel Recessed Drain</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Shower - Floor - Balcony/SS Slot Type Drain.jpg" alt="Stainless Steel Slot Type Drain" loading="lazy"><div class="gallery-item-name">Stainless Steel Slot Type Drain</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Shower - Floor - Balcony/Liner Floor Drain.jpeg" alt="Linear Floor Drain" loading="lazy"><div class="gallery-item-name">Linear Floor Drain</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Shower - Floor - Balcony/Catch Basin Cover.jpg" alt="Catch Basin Cover" loading="lazy"><div class="gallery-item-name">Catch Basin Cover</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Rain Water Outlet/11. SS Rain Water Outlet.jpeg" alt="Stainless Steel Rain Water Outlet" loading="lazy"><div class="gallery-item-name">Stainless Steel Rain Water Outlet</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Rain Water Outlet/Rain Water Outlet - Round.jpeg" alt="Rain Water Outlet Round" loading="lazy"><div class="gallery-item-name">Rain Water Outlet Round</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Shower - Floor - Balcony/Slotted Floor Drain.jpeg" alt="Slotted Floor Drain" loading="lazy"><div class="gallery-item-name">Slotted Floor Drain</div></div>
+                <!-- Row 12: Cleanouts / Rainwater Outlets -->
+                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Rain Water Outlet/SS Clean Out.jpeg" alt="SS Clean Out" loading="lazy"><div class="gallery-item-name">SS Clean Out</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Rain Water Outlet/11. SS Rain Water Outlet.jpeg" alt="SS Rain Water Outlet" loading="lazy"><div class="gallery-item-name">SS Rain Water Outlet</div></div>
                 <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Rain Water Outlet/Flap Drain Outlet.jpeg" alt="Flap Drain Outlet" loading="lazy"><div class="gallery-item-name">Flap Drain Outlet</div></div>
                 <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Rain Water Outlet/Scrupper Drain.jpeg" alt="Scrupper Drain" loading="lazy"><div class="gallery-item-name">Scrupper Drain</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Rain Water Outlet/SS Clean Out.jpeg" alt="Stainless Steel Clean Out" loading="lazy"><div class="gallery-item-name">Stainless Steel Clean Out</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Rain Water Outlet/SS Flap Type Drain.jpeg" alt="Stainless Steel Flap Type Drain" loading="lazy"><div class="gallery-item-name">Stainless Steel Flap Type Drain</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Rain Water Outlet/Stainless Steel Scrupper Drain.jpeg" alt="Stainless Steel Scrupper Drain" loading="lazy"><div class="gallery-item-name">Stainless Steel Scrupper Drain</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Rain Water Outlet/Slotted Drain Outlet.jpeg" alt="Slotted Drain Outlet" loading="lazy"><div class="gallery-item-name">Slotted Drain Outlet</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Floor Access Cover/Recessed Double Access Cover.jpeg" alt="Recessed Double Access Cover" loading="lazy"><div class="gallery-item-name">Recessed Double Access Cover</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Rain Water Outlet/SS Flap Type Drain.jpeg" alt="SS Flap Type Drain" loading="lazy"><div class="gallery-item-name">SS Flap Type Drain</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/Drainage Solutions/Rain Water Outlet/Rain Water Outlet - Round.jpeg" alt="Rain Water Outlet Round" loading="lazy"><div class="gallery-item-name">Rain Water Outlet Round</div></div>
+                <!-- Row 13: Floor Access Panels -->
                 <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Floor Access Cover/Floor Cover Recessed Type Heavy Duty.jpeg" alt="Floor Cover Recessed Heavy Duty" loading="lazy"><div class="gallery-item-name">Floor Cover Recessed Heavy Duty</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Floor Access Cover/Powder Coated Floor Access Cover.jpeg" alt="Powder Coated Floor Access Cover" loading="lazy"><div class="gallery-item-name">Powder Coated Floor Access Cover</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Floor Access Cover/Solid Top Cover.jpeg" alt="Solid Top Cover" loading="lazy"><div class="gallery-item-name">Solid Top Cover</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Floor Access Cover/Access Cover with GRP.jpeg" alt="Access Cover with GRP" loading="lazy"><div class="gallery-item-name">Access Cover with GRP</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Floor Access Cover/Recessed Double Access Cover.jpeg" alt="Recessed Double Access Cover" loading="lazy"><div class="gallery-item-name">Recessed Double Access Cover</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Floor Access Cover/Powder Coated Floor Access Cover.jpeg" alt="Powder Coated Floor Access Cover" loading="lazy"><div class="gallery-item-name">Powder Coated Floor Access</div></div>
                 <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Floor Access Cover/Double Opening floor Access.jpeg" alt="Double Opening Floor Access" loading="lazy"><div class="gallery-item-name">Double Opening Floor Access</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Floor Access Cover/GI Access Cover.jpeg" alt="Galvanized Iron Access Cover" loading="lazy"><div class="gallery-item-name">Galvanized Iron Access Cover</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Floor Access Cover/Rec Floor Access Cover.jpeg" alt="Recessed Floor Access Cover" loading="lazy"><div class="gallery-item-name">Recessed Floor Access Cover</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Floor Access Cover/Solid Top Manhole Cover.jpeg" alt="Solid Top Manhole Cover" loading="lazy"><div class="gallery-item-name">Solid Top Manhole Cover</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Floor Access Cover/Water Tank Cover.jpg" alt="Water Tank Cover" loading="lazy"><div class="gallery-item-name">Water Tank Cover</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Floor Access Cover/Access Cover with GRP.jpeg" alt="Access Cover with GRP" loading="lazy"><div class="gallery-item-name">Access Cover with GRP</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Floor Access Cover/GI Access Cover.jpeg" alt="GI Access Cover" loading="lazy"><div class="gallery-item-name">GI Access Cover</div></div>
+                <!-- Row 14: Manhole Covers -->
                 <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Manhole Cover/Heavy Duty Manhole Cover.jpeg" alt="Heavy Duty Manhole Cover" loading="lazy"><div class="gallery-item-name">Heavy Duty Manhole Cover</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Manhole Cover/Hydraulic Opening Cover.jpeg" alt="Hydraulic Opening Cover" loading="lazy"><div class="gallery-item-name">Hydraulic Opening Cover</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Manhole Cover/Aluminium Double Access Manhole Cover.jpeg" alt="Aluminium Double Access Manhole Cover" loading="lazy"><div class="gallery-item-name">Aluminium Double Access Manhole Cover</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Manhole Cover/Air sealed Manhole Cover.jpeg" alt="Air Sealed Manhole Cover" loading="lazy"><div class="gallery-item-name">Air Sealed Manhole Cover</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Manhole Cover/Recessed Multi Opening Cover.jpeg" alt="Recessed Multi Opening Cover" loading="lazy"><div class="gallery-item-name">Recessed Multi Opening Cover</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Manhole Cover/SS Manhole Cover.jpeg" alt="SS Manhole Cover" loading="lazy"><div class="gallery-item-name">SS Manhole Cover</div></div>
                 <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Manhole Cover/Recessed Type Manhole.jpeg" alt="Recessed Type Manhole" loading="lazy"><div class="gallery-item-name">Recessed Type Manhole</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Manhole Cover/SS Heavy Duty Cover.jpeg" alt="Stainless Steel Heavy Duty Cover" loading="lazy"><div class="gallery-item-name">Stainless Steel Heavy Duty Cover</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Manhole Cover/SS Manhole Cover.jpeg" alt="Stainless Steel Manhole Cover" loading="lazy"><div class="gallery-item-name">Stainless Steel Manhole Cover</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Manhole Cover/Solid Top Manhole.jpg" alt="Solid Top Manhole" loading="lazy"><div class="gallery-item-name">Solid Top Manhole</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Manhole Cover/MS Manhole Cover.jpeg" alt="Mild Steel Manhole Cover" loading="lazy"><div class="gallery-item-name">Mild Steel Manhole Cover</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Manhole Cover/Hydraulic Opening Cover.jpeg" alt="Hydraulic Opening Cover" loading="lazy"><div class="gallery-item-name">Hydraulic Opening Cover</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Manhole Cover/Aluminium Double Access Manhole Cover.jpeg" alt="Aluminium Double Access Manhole" loading="lazy"><div class="gallery-item-name">Aluminium Double Access Manhole</div></div>
                 <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Manhole Cover/Manhole Cover with GRP.jpeg" alt="Manhole Cover with GRP" loading="lazy"><div class="gallery-item-name">Manhole Cover with GRP</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Manhole Cover/Triangle Opening MHC.jpeg" alt="Triangle Opening Manhole Cover" loading="lazy"><div class="gallery-item-name">Triangle Opening Manhole Cover</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Manhole Cover/Sumpit Cover.jpeg" alt="Sump Pit Cover" loading="lazy"><div class="gallery-item-name">Sump Pit Cover</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Roof Hatch Cover/Access Hatch Cover.jpeg" alt="Access Hatch Cover" loading="lazy"><div class="gallery-item-name">Access Hatch Cover</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Roof Hatch Cover/Alu Roof Hatch Cover.jpeg" alt="Aluminium Roof Hatch Cover" loading="lazy"><div class="gallery-item-name">Aluminium Roof Hatch Cover</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Roof Hatch Cover/Double Opening Cover.jpeg" alt="Double Opening Cover" loading="lazy"><div class="gallery-item-name">Double Opening Cover</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Roof Hatch Cover/GI Roof Hatch Cover.jpg" alt="Galvanized Iron Roof Hatch Cover" loading="lazy"><div class="gallery-item-name">Galvanized Iron Roof Hatch Cover</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Roof Hatch Cover/Hydraulic Cover.jpeg" alt="Hydraulic Cover" loading="lazy"><div class="gallery-item-name">Hydraulic Cover</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Roof Hatch Cover/Multi Opening Roof Hatch Cover.jpeg" alt="Multi Opening Roof Hatch Cover" loading="lazy"><div class="gallery-item-name">Multi Opening Roof Hatch Cover</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Roof Hatch Cover/Powder Coated Hatch Cover.jpeg" alt="Powder Coated Hatch Cover" loading="lazy"><div class="gallery-item-name">Powder Coated Hatch Cover</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Roof Hatch Cover/Roof Access Hatch.jpeg" alt="Roof Access Hatch" loading="lazy"><div class="gallery-item-name">Roof Access Hatch</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Roof Hatch Cover/Single Opening Cover.jpeg" alt="Single Opening Cover" loading="lazy"><div class="gallery-item-name">Single Opening Cover</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Roof Hatch Cover/Hatch Cover Double Opening.jpeg" alt="Hatch Cover Double Opening" loading="lazy"><div class="gallery-item-name">Hatch Cover Double Opening</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Wall Access Cover/SS Wall Access Frame with Door.jpeg" alt="Stainless Steel Wall Access Frame with Door" loading="lazy"><div class="gallery-item-name">Stainless Steel Wall Access Frame with Door</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Wall Access Cover/SS Wall Access Panel.jpg" alt="Stainless Steel Wall Access Panel" loading="lazy"><div class="gallery-item-name">Stainless Steel Wall Access Panel</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Wall Access Cover/Wall Access Panel.jpeg" alt="Wall Access Panel" loading="lazy"><div class="gallery-item-name">Wall Access Panel</div></div>
+                <!-- Row 15: Wall & Roof Access Panels -->
+                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Wall Access Cover/SS Wall Access Panel.jpg" alt="SS Wall Access Panel" loading="lazy"><div class="gallery-item-name">SS Wall Access Panel</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Wall Access Cover/GI Wall Access Door.jpeg" alt="GI Wall Access Door" loading="lazy"><div class="gallery-item-name">GI Wall Access Door</div></div>
                 <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Wall Access Cover/Double Wall Access Cover.jpeg" alt="Double Wall Access Cover" loading="lazy"><div class="gallery-item-name">Double Wall Access Cover</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Wall Access Cover/GI Wall Access Door.jpeg" alt="Galvanized Iron Wall Access Door" loading="lazy"><div class="gallery-item-name">Galvanized Iron Wall Access Door</div></div>
-                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Wall Access Cover/Access Cover with Lock.jpg" alt="Access Cover with Lock" loading="lazy"><div class="gallery-item-name">Access Cover with Lock</div></div>
-            </div><!-- end gallery-grid -->
+                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Roof Hatch Cover/Roof Access Hatch.jpeg" alt="Roof Access Hatch" loading="lazy"><div class="gallery-item-name">Roof Access Hatch</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Roof Hatch Cover/GI Roof Hatch Cover.jpg" alt="GI Roof Hatch Cover" loading="lazy"><div class="gallery-item-name">GI Roof Hatch Cover</div></div>
+                <div class="gallery-item"><img src="images/Slide-images/Access & Utility Service Panels/Roof Hatch Cover/Powder Coated Hatch Cover.jpeg" alt="Powder Coated Hatch Cover" loading="lazy"><div class="gallery-item-name">Powder Coated Hatch Cover</div></div>
 
-            <!-- Load More Button -->
-            <div class="load-more-wrap" id="loadMoreWrap">
-                <button class="btn-load-more" id="loadMoreBtn" onclick="loadMore()">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-                    Load More
-                </button>
-            </div>
+            </div><!-- end gallery-grid -->
         </div>
     </section>
 
-    <script>
-        const BATCH = 50;
-        let shown = 0;
-        const items = document.querySelectorAll('.gallery-item');
-        const total = items.length;
-        const countEl = document.getElementById('galleryCount');
-        const wrap = document.getElementById('loadMoreWrap');
-
-        // Hide all first, then show first batch
-        items.forEach(el => el.style.display = 'none');
-
-        function updateCount() {
-            countEl.textContent = 'Showing ' + shown + ' of ' + total;
-        }
-
-        function loadMore() {
-            const end = Math.min(shown + BATCH, total);
-            for (let i = shown; i < end; i++) {
-                items[i].style.display = 'block';
-            }
-            shown = end;
-            updateCount();
-            if (shown >= total) {
-                wrap.style.display = 'none';
-            }
-        }
-
-        // Load first 50 on page load
-        loadMore();
-    </script>
+    <script src="js/nav-products.js"></script>
 </body>
 </html>
