@@ -384,41 +384,73 @@
     });
 
 
-    // Contact Form Handling
+    // Contact Form Handling — Web3Forms (delivers to info@aldhabisteels.com)
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const data = {
-                name: formData.get('name'),
-                email: formData.get('email'),
-                phone: formData.get('phone'),
-                message: formData.get('message')
-            };
 
-            // Basic validation
-            if (!data.name || !data.email || !data.message) {
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+
+            // Basic client-side validation
+            const name    = contactForm.querySelector('#name').value.trim();
+            const email   = contactForm.querySelector('#email').value.trim();
+            const phone   = contactForm.querySelector('#phone').value.trim();
+            const service = contactForm.querySelector('#service').value;
+            const message = contactForm.querySelector('#message').value.trim();
+
+            if (!name || !email || !phone || !service || !message) {
                 showFormMessage('Please fill in all required fields.', 'error');
                 return;
             }
 
-            // Email validation
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(data.email)) {
+            if (!emailRegex.test(email)) {
                 showFormMessage('Please enter a valid email address.', 'error');
                 return;
             }
 
-            // Simulate form submission (replace with actual API call)
-            showFormMessage('Sending message...', 'info');
-            
-            // In production, replace this with actual form submission
-            setTimeout(() => {
-                showFormMessage('Thank you! Your message has been sent. We will contact you soon.', 'success');
-                contactForm.reset();
-            }, 1500);
+            // Disable button while sending
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.querySelector('span').textContent = 'Sending…';
+            }
+            showFormMessage('Sending your enquiry…', 'info');
+
+            try {
+                const payload = {
+                    access_key: 'YOUR_WEB3FORMS_ACCESS_KEY', // ← replace after registration
+                    subject: `New Quote Request from ${name}`,
+                    from_name: 'Al Dhabi Steel Website',
+                    replyto: email,
+                    name,
+                    email,
+                    phone,
+                    service,
+                    message
+                };
+
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showFormMessage('Thank you! Your enquiry has been sent. We will contact you within 24 hours.', 'success');
+                    contactForm.reset();
+                } else {
+                    showFormMessage('Something went wrong. Please try again or contact us on WhatsApp.', 'error');
+                }
+            } catch (err) {
+                showFormMessage('Network error. Please check your connection and try again.', 'error');
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.querySelector('span').textContent = 'Get Free Quote';
+                }
+            }
         });
     }
 
