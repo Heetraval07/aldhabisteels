@@ -3030,6 +3030,21 @@ section:nth-child(odd) {
     transition: color var(--transition-base);
 }
 
+.footer-powered {
+    font-size: var(--fs-xs);
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.footer-powered a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-powered a:hover {
+    color: var(--color-accent);
+}
+
 .footer-bottom-links a:hover {
     color: var(--color-accent);
 }
